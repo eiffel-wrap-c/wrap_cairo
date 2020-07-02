@@ -1,5 +1,5 @@
 # wrap_cairo
-`wrap_cairo` is an Eiffel binding of [Quiche C API](https://gitlab.freedesktop.org/cairo/cairo) 
+`wrap_cairo` is an Eiffel binding of [Cairo C API](https://gitlab.freedesktop.org/cairo/cairo) 
 using [WrapC](https://github.com/eiffel-wrap-c/WrapC) tool.
 
 Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window
