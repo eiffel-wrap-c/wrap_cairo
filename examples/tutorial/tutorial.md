@@ -105,6 +105,7 @@ The [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cair
 {CAIRO_FUNCTIONS}.cairo_fill (cr)
 ```
 [![fill]<img align="right" src="./images/fill.png">](./fill)
+
 ### Show Text / Glyphs
 
 The [`cairo_show_text()`](http://www.cairographics.org/manual/cairo-text.html#cairo-show-text) operation forms the mask from text. It may be easier to think of `cairo_show_text()` as a shortcut for creating a path with [`cairo_text_path()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-text-path) and then using [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-fill) to transfer it. Be aware `cairo_show_text()` caches glyphs so is much more efficient if you work with a lot of text.
@@ -184,6 +185,7 @@ color to use full opacity.
 {CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 0, 0, 1, 0.40)
 {CAIRO_FUNCTIONS}.cairo_fill (cr);
 ```
+[![set_source_rgba]<img align="right" src="./images/setsourcergba.png">](./set_source_rgba)
 
 Gradients describe a progression of colors by setting a start and stop reference location and a series of "stops" along the way. [Linear gradients](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-create-linear) are built from two points which pass through parallel lines to define the start and stop locations. [Radial gradients](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-create-radial) are also built from two points, but each has an associated radius of the circle on which to define the start and stop locations. Stops are added to the gradient with [`cairo_add_color_stop_rgb()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-add-color-stop-rgb) and [`cairo_add_color_stop_rgba()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-add-color-stop-rgba) which take a color like `cairo_set_source_rgb*()`, as well as an offset to indicate where it lies between the reference locations. The colors between adjacent stops are averaged over space to form a smooth blend. Finally, the behavior beyond the reference locations can be controlled
 with [`cairo_set_extend()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-set-extend).
@@ -214,6 +216,7 @@ linpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_linear (0.25, 0.35, 0.75, 0.65)
 {CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
 {CAIRO_FUNCTIONS}.cairo_fill (cr)
 ```
+[![set_source_gradient]<img align="right" src="./images/setsourcegradient.png">](./set_source_gradient)
 
 Images include both surfaces loaded from existing files with [`cairo_image_surface_create_from_png()`](http://www.cairographics.org/manual/cairo-PNG-Support.html#cairo-image-surface-create-from-png) and surfaces created from within cairo as an earlier destination. As of cairo 1.2, the easiest way to make and use an earlier destination as a source is with [`cairo_push_group()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-push-group) and either [`cairo_pop_group()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-pop-group) or [`cairo_pop_group_to_source()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-pop-group-to-source). Use `cairo_pop_group_to_source()` to use it just until you select a new source, and `cairo_pop_group()` when you want to save it so you select it over and over again with [`cairo_set_source()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-set-source).
 
@@ -233,6 +236,7 @@ Cairo uses a connect-the-dots style system when creating paths.  Start at 1, dra
 ```
 {CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.25, 0.25)
 ```
+<img align="right" src="./images/path-moveto.png">
 
 ### Straight Lines
 
@@ -242,6 +246,7 @@ Whether with absolute coordinates [`cairo_line_to()`](http://www.cairographics.o
 {CAIRO_FUNCTIONS}.cairo_line_to (cr, 0.5, 0.375)
 {CAIRO_FUNCTIONS}.cairo_rel_line_to (cr, 0.25, -0.125)
 ```
+<img align="right" src="./images/path-lineto.png">
 
 ### Arcs
 
@@ -250,6 +255,7 @@ Arcs are parts of the outside of a circle. Unlike straight lines, the point you 
 ```
 {CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.25 * {SINGLE_MATH}.sqrt (2), -0.25 * {MATH_CONST}.PI, 0.25 * {MATH_CONST}.PI)
 ```
+<img align="right" src="./images/path-arcto.png">
 
 ### Curves
 
@@ -258,6 +264,7 @@ Curves in cairo are cubic Bézier splines. They start at the current reference p
 ```
 {CAIRO_FUNCTIONS}.cairo_rel_curve_to (cr, -0.25, -0.125, -0.25, 0.125, -0.5, 0)
 ```
+<img align="right" src="./images/path-curveto.png">
 
 ### Close the path
 
@@ -267,6 +274,7 @@ one continuous path and has no start or end. A closed path has no line caps for 
 ```
 {CAIRO_FUNCTIONS}.cairo_close_path (cr)
 ```
+[![path_close]<img align="right" src="./images/path-close.png">](./path_close)
 
 ### Text
 
