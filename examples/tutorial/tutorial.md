@@ -46,16 +46,16 @@ Cairo's nouns are somewhat abstract. To make them concrete I'm including diagram
 
 ### Destination
 
-The destination is the [surface](http://www.cairographics.org/manual/cairo-surfaces.html) on which you're drawing. It may be tied to an array of pixels like in this tutorial, or it might be tied to a SVG or PDF file, or something else. This surface collects the elements of your graphic as you apply them, allowing you to build up a complex work as though painting on a canvas.
+The destination is the [surface](http://www.cairographics.org/manual/cairo-surfaces.html) on which you're drawing. It may be tied to an array of pixels like in this tutorial, or it might be tied to a SVG or PDF file, or something else. This surface collects the elements of your graphic as you apply them, allowing you to build up a complex work as though painting on a canvas. <img align="right" src="./images/destination.png">
 
 ### Source
 
-The source is the "paint" you're about to work with. I show this as it is—plain black for several examples—but translucent to show lower layers. Unlike real paint, it doesn't have to be a single color; it can be a [pattern](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html) or even a previously created destination [surface](http://www.cairographics.org/manual/cairo-surfaces.html) (see [How do I paint from one surface to another?](http://cairographics.org/FAQ/#paint_from_a_surface)). Also unlike real paint it can contain transparency information—the Alpha channel.
+The source is the "paint" you're about to work with. I show this as it is—plain black for several examples—but translucent to show lower layers. Unlike real paint, it doesn't have to be a single color; it can be a [pattern](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html) or even a previously created destination [surface](http://www.cairographics.org/manual/cairo-surfaces.html) (see [How do I paint from one surface to another?](http://cairographics.org/FAQ/#paint_from_a_surface)). Also unlike real paint it can contain transparency information—the Alpha channel.<img align="right" src="./images/source.png">
 
 ### Mask
 
 The mask is the most important piece: it controls where you apply the source to the destination. I will show it as a yellow layer with holes where it lets the source through. When you apply a drawing verb, it's like you stamp the source to the destination. Anywhere the mask allows, the source is copied. Anywhere the mask disallows, nothing happens.
-
+<img align="right" src="./images/the-mask.png">
 ### Path
 
 The path is somewhere between part of the mask and part of the context. I will show it as thin green lines on the mask layer. It is manipulated by path verbs, then used by drawing verbs.
@@ -93,6 +93,7 @@ Note: To see the code snippet in action, use the stroke.c file linked from the f
 {CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
 {CAIRO_FUNCTIONS}.cairo_stroke (cr)
 ```
+[![stroke]<img align="right" src="./images/stroke.png">](./stroke)
 
 ### Fill
 
@@ -103,7 +104,7 @@ The [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cair
 {CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
 {CAIRO_FUNCTIONS}.cairo_fill (cr)
 ```
-
+[![fill]<img align="right" src="./images/fill.png">](./fill)
 ### Show Text / Glyphs
 
 The [`cairo_show_text()`](http://www.cairographics.org/manual/cairo-text.html#cairo-show-text) operation forms the mask from text. It may be easier to think of `cairo_show_text()` as a shortcut for creating a path with [`cairo_text_path()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-text-path) and then using [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-fill) to transfer it. Be aware `cairo_show_text()` caches glyphs so is much more efficient if you work with a lot of text.
@@ -119,6 +120,7 @@ create te.make
 {CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.5 - te.width / 2 - te.x_bearing,	0.5 - te.height / 2 - te.y_bearing);
 {CAIRO_FUNCTIONS}.cairo_show_text (cr, "a");
 ```
+[![show_text]<img align="right" src="./images/showtext.png">](./show_text)
 
 ### Paint
 
@@ -128,6 +130,7 @@ The [`cairo_paint()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cai
 {CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0.0, 0.0, 0.0)
 {CAIRO_FUNCTIONS}.cairo_paint_with_alpha (cr, 0.5)
 ```
+[![paint]<img align="right" src="./images/paint.png">](./paint)
 
 ### Mask
 
@@ -147,6 +150,7 @@ radpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_radial (0.5, 0.5, 0.25, 0.5, 0.
 {CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
 {CAIRO_FUNCTIONS}.cairo_mask (cr, radpat)
 ```
+[![mask]<img align="right" src="./images/mask.png">](./mask)
 
 # Drawing with Cairo
 
