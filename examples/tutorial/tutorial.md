@@ -1,4 +1,4 @@
-Cairo Tutorial
+#Cairo Tutorial
 
 This tutorial is derived from Cairo C tutorial [https://www.cairographics.org/tutorial/] based on Michael Urman's [cairo tutorial for python programmers](http://www.tortall.net/mu/wiki/CairoTutorial). The original code snippets have been translated to Eiffel, the text has only been changed as much as necessary.
 
@@ -88,10 +88,10 @@ The [`cairo_stroke()`](http://www.cairographics.org/manual/cairo-cairo-t.html#ca
 Note: To see the code snippet in action, use the stroke.c file linked from the figure to the right. Just pasting the snippet into the FAQ's hello.c might give unexpected results due to different scaling. Read on; scaling is explained in section [Working with Transforms](#l1transforms) below.
 
 ```
-	{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.1)
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_stroke (cr)
+{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.1)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_stroke (cr)
 ```
 
 ### Fill
@@ -99,9 +99,9 @@ Note: To see the code snippet in action, use the stroke.c file linked from the f
 The [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-fill) operation instead uses the path like the lines of a coloring book, and allows the source through the mask within the hole whose boundaries are the path. For complex paths (paths with multiple closed sub-paths—like a donut—or paths that self-intersect) this is influenced by the [fill rule](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-set-fill-rule). Note that while stroking the path transfers the source for half of the line width on each side of the path, filling a path fills directly up to the edge of the path and no further.
 
 ```
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.25, 0.25, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_fill (cr)
 ```
 
 ### Show Text / Glyphs
@@ -109,15 +109,15 @@ The [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cair
 The [`cairo_show_text()`](http://www.cairographics.org/manual/cairo-text.html#cairo-show-text) operation forms the mask from text. It may be easier to think of `cairo_show_text()` as a shortcut for creating a path with [`cairo_text_path()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-text-path) and then using [`cairo_fill()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-fill) to transfer it. Be aware `cairo_show_text()` caches glyphs so is much more efficient if you work with a lot of text.
 
 ```
-    te:	CAIRO_TEXT_EXTENTS_T_STRUCT_API
+te: CAIRO_TEXT_EXTENTS_T_STRUCT_API
 	
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
-	{CAIRO_FUNCTIONS}.cairo_select_font_face (cr, "Georgia", {CAIRO_FONT_SLANT_ENUM_API}.CAIRO_FONT_SLANT_NORMAL, {CAIRO_FONT_WEIGHT_ENUM_API}.CAIRO_FONT_WEIGHT_BOLD)
-	{CAIRO_FUNCTIONS}.cairo_set_font_size (cr, 1.2)
-	create te.make
-	{CAIRO_FUNCTIONS}.cairo_text_extents (cr, "a", te)
-	{CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.5 - te.width / 2 - te.x_bearing,	0.5 - te.height / 2 - te.y_bearing);
-	{CAIRO_FUNCTIONS}.cairo_show_text (cr, "a");
+{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
+{CAIRO_FUNCTIONS}.cairo_select_font_face (cr, "Georgia", {CAIRO_FONT_SLANT_ENUM_API}.CAIRO_FONT_SLANT_NORMAL, {CAIRO_FONT_WEIGHT_ENUM_API}.CAIRO_FONT_WEIGHT_BOLD)
+{CAIRO_FUNCTIONS}.cairo_set_font_size (cr, 1.2)
+create te.make
+{CAIRO_FUNCTIONS}.cairo_text_extents (cr, "a", te)
+{CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.5 - te.width / 2 - te.x_bearing,	0.5 - te.height / 2 - te.y_bearing);
+{CAIRO_FUNCTIONS}.cairo_show_text (cr, "a");
 ```
 
 ### Paint
@@ -125,8 +125,8 @@ The [`cairo_show_text()`](http://www.cairographics.org/manual/cairo-text.html#ca
 The [`cairo_paint()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-paint) operation uses a mask that transfers the entire source to the destination. Some people consider this an infinitely large mask, and others consider it no mask; the result is the same. The related operation [`cairo_paint_with_alpha()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-paint-with-alpha) similarly allows transfer of the full source to destination, but it transfers only the provided percentage of the color.
 
 ```
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0.0, 0.0, 0.0)
-	{CAIRO_FUNCTIONS}.cairo_paint_with_alpha (cr, 0.5)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0.0, 0.0, 0.0)
+{CAIRO_FUNCTIONS}.cairo_paint_with_alpha (cr, 0.5)
 ```
 
 ### Mask
@@ -134,18 +134,18 @@ The [`cairo_paint()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cai
 The  [`cairo_mask()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-mask)  and [`cairo_mask_surface()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-mask-surface) operations allow transfer according to the transparency/opacity of a second source pattern or surface. Where the pattern or surface is opaque, the current source is transferred to the destination.  Where the pattern or surface is transparent, nothing is transferred.
 
 ```
-    linpat, radpat: CAIRO_PATTERN_STRUCT_API
+linpat, radpat: CAIRO_PATTERN_STRUCT_API
 
-	linpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_linear (0, 0, 1, 1)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (linpat, 0, 0, 0.3, 0.8)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (linpat, 1, 0, 0.8, 0.3)
+linpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_linear (0, 0, 1, 1)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (linpat, 0, 0, 0.3, 0.8)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (linpat, 1, 0, 0.8, 0.3)
 
-	radpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_radial (0.5, 0.5, 0.25, 0.5, 0.5, 0.75);
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (radpat, 0, 0, 0, 0, 1)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (radpat, 0.5, 0, 0, 0, 0)
+radpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_radial (0.5, 0.5, 0.25, 0.5, 0.5, 0.75);
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (radpat, 0, 0, 0, 0, 1)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (radpat, 0.5, 0, 0, 0, 0)
 
-	{CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
-	{CAIRO_FUNCTIONS}.cairo_mask (cr, radpat)
+{CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
+{CAIRO_FUNCTIONS}.cairo_mask (cr, radpat)
 ```
 
 # Drawing with Cairo
@@ -160,55 +160,55 @@ Using `cairo_set_source_rgb (cr, r, g, b)` is equivalent to using `cairo_set_sou
 color to use full opacity.
 
 ```
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
-	{CAIRO_FUNCTIONS}.cairo_move_to (cr, 0, 0)
-	{CAIRO_FUNCTIONS}.cairo_line_to (cr, 1, 1)
-	{CAIRO_FUNCTIONS}.cairo_move_to (cr, 1, 0)
-	{CAIRO_FUNCTIONS}.cairo_line_to (cr, 0, 1)
-	{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.2)
-	{CAIRO_FUNCTIONS}.cairo_stroke (cr)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgb (cr, 0, 0, 0)
+{CAIRO_FUNCTIONS}.cairo_move_to (cr, 0, 0)
+{CAIRO_FUNCTIONS}.cairo_line_to (cr, 1, 1)
+{CAIRO_FUNCTIONS}.cairo_move_to (cr, 1, 0)
+{CAIRO_FUNCTIONS}.cairo_line_to (cr, 0, 1)
+{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.2)
+{CAIRO_FUNCTIONS}.cairo_stroke (cr)
 
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0, 0, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 1, 0, 0, 0.80)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr)
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0, 0, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 1, 0, 0, 0.80)
+{CAIRO_FUNCTIONS}.cairo_fill (cr)
 
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0, 0.5, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 0, 1, 0, 0.60)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr);
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0, 0.5, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 0, 1, 0, 0.60)
+{CAIRO_FUNCTIONS}.cairo_fill (cr);
 
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.5, 0, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 0, 0, 1, 0.40)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr);
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.5, 0, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_set_source_rgba (cr, 0, 0, 1, 0.40)
+{CAIRO_FUNCTIONS}.cairo_fill (cr);
 ```
 
 Gradients describe a progression of colors by setting a start and stop reference location and a series of "stops" along the way. [Linear gradients](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-create-linear) are built from two points which pass through parallel lines to define the start and stop locations. [Radial gradients](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-create-radial) are also built from two points, but each has an associated radius of the circle on which to define the start and stop locations. Stops are added to the gradient with [`cairo_add_color_stop_rgb()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-add-color-stop-rgb) and [`cairo_add_color_stop_rgba()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-add-color-stop-rgba) which take a color like `cairo_set_source_rgb*()`, as well as an offset to indicate where it lies between the reference locations. The colors between adjacent stops are averaged over space to form a smooth blend. Finally, the behavior beyond the reference locations can be controlled
 with [`cairo_set_extend()`](http://www.cairographics.org/manual/cairo-cairo-pattern-t.html#cairo-pattern-set-extend).
 
 ```
-    radpat, linpat: CAIRO_PATTERN_STRUCT_API
+radpat, linpat: CAIRO_PATTERN_STRUCT_API
 
-	radpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_radial (0.25, 0.25, 0.1, 0.5, 0.5, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (radpat, 0, 1.0, 0.8, 0.8)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (radpat, 1, 0.9, 0.0, 0.0)
+radpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_radial (0.25, 0.25, 0.1, 0.5, 0.5, 0.5)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (radpat, 0, 1.0, 0.8, 0.8)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgb (radpat, 1, 0.9, 0.0, 0.0)
 
-	across 1 |..| 9 as ic loop
-		across 1 |..| 9 as jc loop
-			{CAIRO_FUNCTIONS}.cairo_rectangle (cr, ic.item / 10.0 - 0.04, jc.item / 10.0 - 0.04, 0.08, 0.08)
-		end
+across 1 |..| 9 as ic loop
+	across 1 |..| 9 as jc loop
+		{CAIRO_FUNCTIONS}.cairo_rectangle (cr, ic.item / 10.0 - 0.04, jc.item / 10.0 - 0.04, 0.08, 0.08)
 	end
-	{CAIRO_FUNCTIONS}.cairo_set_source (cr, radpat)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr)
+end
+{CAIRO_FUNCTIONS}.cairo_set_source (cr, radpat)
+{CAIRO_FUNCTIONS}.cairo_fill (cr)
 
-	linpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_linear (0.25, 0.35, 0.75, 0.65)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.00, 1, 1, 1, 0)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.25, 0, 1, 0, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.50, 1, 1, 1, 0)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.75, 0, 0, 1, 0.5)
-	{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 1.00, 1, 1, 1, 0)
+linpat := {CAIRO_FUNCTIONS}.cairo_pattern_create_linear (0.25, 0.35, 0.75, 0.65)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.00, 1, 1, 1, 0)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.25, 0, 1, 0, 0.5)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.50, 1, 1, 1, 0)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 0.75, 0, 0, 1, 0.5)
+{CAIRO_FUNCTIONS}.cairo_pattern_add_color_stop_rgba (linpat, 1.00, 1, 1, 1, 0)
 
-	{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.0, 0.0, 1, 1)
-	{CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
-	{CAIRO_FUNCTIONS}.cairo_fill (cr)
+{CAIRO_FUNCTIONS}.cairo_rectangle (cr, 0.0, 0.0, 1, 1)
+{CAIRO_FUNCTIONS}.cairo_set_source (cr, linpat)
+{CAIRO_FUNCTIONS}.cairo_fill (cr)
 ```
 
 Images include both surfaces loaded from existing files with [`cairo_image_surface_create_from_png()`](http://www.cairographics.org/manual/cairo-PNG-Support.html#cairo-image-surface-create-from-png) and surfaces created from within cairo as an earlier destination. As of cairo 1.2, the easiest way to make and use an earlier destination as a source is with [`cairo_push_group()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-push-group) and either [`cairo_pop_group()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-pop-group) or [`cairo_pop_group_to_source()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-pop-group-to-source). Use `cairo_pop_group_to_source()` to use it just until you select a new source, and `cairo_pop_group()` when you want to save it so you select it over and over again with [`cairo_set_source()`](http://www.cairographics.org/manual/cairo-cairo-t.html#cairo-set-source).
@@ -227,7 +227,7 @@ the path.  For stroking, alongside [`cairo_stroke()`](http://www.cairographics.o
 Cairo uses a connect-the-dots style system when creating paths.  Start at 1, draw a line to 2, then 3, and so forth. When you start a path, or when you need to start a new sub-path, you want it to be like point 1: it has nothing connecting to it. For this, use [`cairo_move_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-move-to). This sets the current reference point without making the path connect the previous point to it. There is also a relative coordinate variant, [`cairo_rel_move_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-rel-move-to), which sets the new reference a specified distance away from the current reference instead. After setting your first reference point, use the other path operations which both update the reference point and connect to it in some way.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.25, 0.25)
+{CAIRO_FUNCTIONS}.cairo_move_to (cr, 0.25, 0.25)
 ```
 
 ### Straight Lines
@@ -235,8 +235,8 @@ Cairo uses a connect-the-dots style system when creating paths.  Start at 1, dra
 Whether with absolute coordinates [`cairo_line_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-line-to) (extend the path from the reference to this point), or relative coordinates [`cairo_rel_line_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-rel-line-to) (extend the path from the reference this far in this direction), the path connection will be a straight line. The new reference point will be at the other end of the line.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_line_to (cr, 0.5, 0.375)
-    {CAIRO_FUNCTIONS}.cairo_rel_line_to (cr, 0.25, -0.125)
+{CAIRO_FUNCTIONS}.cairo_line_to (cr, 0.5, 0.375)
+{CAIRO_FUNCTIONS}.cairo_rel_line_to (cr, 0.25, -0.125)
 ```
 
 ### Arcs
@@ -244,7 +244,7 @@ Whether with absolute coordinates [`cairo_line_to()`](http://www.cairographics.o
 Arcs are parts of the outside of a circle. Unlike straight lines, the point you directly specify is not on the path. Instead it is the center of the circle that makes up the addition to the path. Both a starting and ending point on the circle must be specified, and these points are connected either clockwise by [`cairo_arc()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-arc) or counter-clockwise by [`cairo_arc_negative()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-arc-negative). If the previous reference point is not on this new curve, a straight line is added from it to where the arc begins. The reference point is then updated to where the arc ends. There are only absolute versions.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.25 * {SINGLE_MATH}.sqrt (2), -0.25 * {MATH_CONST}.PI, 0.25 * {MATH_CONST}.PI)
+{CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.25 * {SINGLE_MATH}.sqrt (2), -0.25 * {MATH_CONST}.PI, 0.25 * {MATH_CONST}.PI)
 ```
 
 ### Curves
@@ -252,7 +252,7 @@ Arcs are parts of the outside of a circle. Unlike straight lines, the point you 
 Curves in cairo are cubic Bézier splines. They start at the current reference point and smoothly follow the direction of two other points (without going through them) to get to a third specified point. Like lines, there are both absolute ([`cairo_curve_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-curve-to)) and relative ([`cairo_rel_curve_to()`](http://www.cairographics.org/manual/cairo-Paths.html#cairo-rel-curve-to)) versions. Note that the relative variant specifies all points relative to the previous reference point, rather than each relative to the preceding control point of the curve.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_rel_curve_to (cr, -0.25, -0.125, -0.25, 0.125, -0.5, 0)
+{CAIRO_FUNCTIONS}.cairo_rel_curve_to (cr, -0.25, -0.125, -0.25, 0.125, -0.5, 0)
 ```
 
 ### Close the path
@@ -261,7 +261,7 @@ Cairo can also close the path by drawing a straight line to the beginning of the
 one continuous path and has no start or end. A closed path has no line caps for there is no place to put them.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_close_path (cr)
+{CAIRO_FUNCTIONS}.cairo_close_path (cr)
 ```
 
 ### Text
@@ -308,29 +308,29 @@ In the previous sections you should have built up a firm grasp of the operations
 When you're working under a uniform scaling transform, you can't just use pixels for the width of your line. However it's easy to translate with the help of `cairo_device_to_user_distance()` (assuming that the pixel width is `1`):
 
 ```
-    ux, uy: REAL_64
-    ux := 1 
-    uy := 1
-    {CAIRO_FUNCTIONS}.cairo_device_to_user_distance (cr, $ux, $uy)
-    if  ux < uy then
-        ux = uy
-    end    
-    {CAIRO_FUNCTIONS}.cairo_set_line_width (cr, ux)
+ux, uy: REAL_64
+ux := 1 
+uy := 1
+{CAIRO_FUNCTIONS}.cairo_device_to_user_distance (cr, $ux, $uy)
+if  ux < uy then
+    ux = uy
+end    
+{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, ux)
 ```
 
 When you're working under a deforming scale, you may wish to still have line widths that are uniform in device space. For this you should return to a uniform scale before you stroke the path. In the image, the arc on the left is stroked under a deformation, while the arc on the right is stroked under a uniform scale.
 
 ```
-    {CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.1)
+{CAIRO_FUNCTIONS}.cairo_set_line_width (cr, 0.1)
     
-    {CAIRO_FUNCTIONS}.cairo_save (cr)
-    {CAIRO_FUNCTIONS}.cairo_scale (cr, 0.5, 1)
-    {CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.40, 0, 2 * {MATH_CONST}.pi)
-    {CAIRO_FUNCTIONS}.cairo_stroke (cr)
-    {CAIRO_FUNCTIONS}.cairo_translate (cr, 1, 0);
-    {CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.40, 0, 2 * {MATH_CONST}.pi})
-    {CAIRO_FUNCTIONS}.cairo_restore (cr)
-    {CAIRO_FUNCTIONS}.cairo_stroke (cr)
+{CAIRO_FUNCTIONS}.cairo_save (cr)
+{CAIRO_FUNCTIONS}.cairo_scale (cr, 0.5, 1)
+{CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.40, 0, 2 * {MATH_CONST}.pi)
+{CAIRO_FUNCTIONS}.cairo_stroke (cr)
+{CAIRO_FUNCTIONS}.cairo_translate (cr, 1, 0);
+{CAIRO_FUNCTIONS}.cairo_arc (cr, 0.5, 0.5, 0.40, 0, 2 * {MATH_CONST}.pi})
+{CAIRO_FUNCTIONS}.cairo_restore (cr)
+{CAIRO_FUNCTIONS}.cairo_stroke (cr)
 ```
 
 ## Text Alignment
@@ -338,41 +338,41 @@ When you're working under a deforming scale, you may wish to still have line wid
 When you try to center text letter by letter at various locations, you have to decide how you want to center it. For example the following code will actually center letters individually, leading to poor results when your letters are of different sizes. (Unlike most examples, here I assume a 26 x 1 workspace.)
 
 ```
-    iter: STRING_8_ITERATION_CURSOR
-    te: CAIRO_TEXT_EXTENTS_T_STRUCT_API
-    letter: STRING
-    alphabet := "AbCdEfGhIjKlMnOpQrStUvWxYz"
+iter: STRING_8_ITERATION_CURSOR
+te: CAIRO_TEXT_EXTENTS_T_STRUCT_API
+letter: STRING
+alphabet := "AbCdEfGhIjKlMnOpQrStUvWxYz"
 
-	iter := alphabet.new_cursor
-    across iter as ic loop
-		letter := ic.item.out
-		create te.make
-		{CAIRO_FUNCTIONS}.cairo_text_extents (cr, letter, te)
-		{CAIRO_FUNCTIONS}.cairo_move_to (cr, ic.target_index - 1 + 0.5 - te.x_bearing - te.width / 2,	0.5 - te.y_bearing - te.height / 2)
-		{CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
-	end
+iter := alphabet.new_cursor
+across iter as ic loop
+    letter := ic.item.out
+    create te.make
+    {CAIRO_FUNCTIONS}.cairo_text_extents (cr, letter, te)
+    {CAIRO_FUNCTIONS}.cairo_move_to (cr, ic.target_index - 1 + 0.5 - te.x_bearing - te.width / 2,	0.5 - te.y_bearing - te.height / 2)
+    {CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
+end
 ```
 
 Instead the vertical centering must be based on the general size of the font, thus keeping your baseline steady. Note that the exact positioning now depends on the metrics provided by the font itself, so the results are not necessarily the same from font to font.
 
 ```
-    iter: STRING_8_ITERATION_CURSOR
-    fe: CAIRO_FONT_EXTENTS_T_STRUCT_API 
-    te: CAIRO_TEXT_EXTENTS_T_STRUCT_API
-    letter: STRING
-    alphabet := "AbCdEfGhIjKlMnOpQrStUvWxYz"
+iter: STRING_8_ITERATION_CURSOR
+fe: CAIRO_FONT_EXTENTS_T_STRUCT_API 
+te: CAIRO_TEXT_EXTENTS_T_STRUCT_API
+letter: STRING
+alphabet := "AbCdEfGhIjKlMnOpQrStUvWxYz"
 
-	create fe.make
-	{CAIRO_FUNCTIONS}.cairo_font_extents (cr, fe)
+create fe.make
+{CAIRO_FUNCTIONS}.cairo_font_extents (cr, fe)
 
-	iter := alphabet.new_cursor
-	across iter as ic loop
-		letter := ic.item.out
-		create te.make
-		{CAIRO_FUNCTIONS}.cairo_text_extents (cr, letter, te)
-		{CAIRO_FUNCTIONS}.cairo_move_to (cr, ic.target_index - 1 + 0.5 - te.x_bearing - te.width / 2, 0.5 - fe.descent + fe.height / 2);
-		{CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
-	end
+iter := alphabet.new_cursor
+across iter as ic loop
+    letter := ic.item.out
+    create te.make
+    {CAIRO_FUNCTIONS}.cairo_text_extents (cr, letter, te)
+    {CAIRO_FUNCTIONS}.cairo_move_to (cr, ic.target_index - 1 + 0.5 - te.x_bearing - te.width / 2, 0.5 - fe.descent + fe.height / 2);
+    {CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
+end
 ```
 
 ***
