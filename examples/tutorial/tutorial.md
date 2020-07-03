@@ -347,8 +347,11 @@ When you're working under a deforming scale, you may wish to still have line wid
 
 ## Text Alignment
 
-When you try to center text letter by letter at various locations, you have to decide how you want to center it. For example the following code will actually center letters individually, leading to poor results when your letters are of different sizes. (Unlike most examples, here I assume a 26 x 1 workspace.)
-[![tips-letter]<img align="right" src="./images/tips-letter.png">](./tips_letter)
+When you try to center text letter by letter at various locations, you have to decide how you want to center it. For example the following code will actually center letters individually, leading to poor results when your letters are of different sizes. (Unlike most examples, here I assume a 26 x 1 workspace.) 
+[![tips-letter]<img align="right" src="./images/tips-letter.png">](./tips_letter)<br>
+
+
+
 
 ```
 iter: STRING_8_ITERATION_CURSOR
@@ -368,6 +371,8 @@ end
 
 Instead the vertical centering must be based on the general size of the font, thus keeping your baseline steady. Note that the exact positioning now depends on the metrics provided by the font itself, so the results are not necessarily the same from font to font.
 [![tips-font]<img align="right" src="./images/tips-font.png">](./tips_font)
+
+
 
 ```
 iter: STRING_8_ITERATION_CURSOR
