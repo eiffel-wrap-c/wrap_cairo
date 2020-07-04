@@ -11,14 +11,14 @@ feature {ANY}
 
 	cairo_surface_observer_normal: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SURFACE_OBSERVER_NORMAL"
 		end
 
 	cairo_surface_observer_record_operations: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SURFACE_OBSERVER_RECORD_OPERATIONS"
 		end

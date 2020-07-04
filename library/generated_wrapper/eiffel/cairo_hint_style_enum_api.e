@@ -11,35 +11,35 @@ feature {ANY}
 
 	cairo_hint_style_default: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_STYLE_DEFAULT"
 		end
 
 	cairo_hint_style_none: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_STYLE_NONE"
 		end
 
 	cairo_hint_style_slight: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_STYLE_SLIGHT"
 		end
 
 	cairo_hint_style_medium: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_STYLE_MEDIUM"
 		end
 
 	cairo_hint_style_full: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_STYLE_FULL"
 		end

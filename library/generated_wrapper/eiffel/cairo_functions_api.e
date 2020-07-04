@@ -11,7 +11,7 @@ feature -- Access
 
 	cairo_version: INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_version ();
@@ -20,14 +20,14 @@ feature -- Access
 
 	cairo_version_string: POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_version_string ();
 			]"
 		end
 
-	cairo_create (target: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_STRUCT_API
+	cairo_create (target: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_STRUCT_API 
 		do
 			if attached c_cairo_create (target.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -37,7 +37,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_reference (cr: CAIRO_STRUCT_API): detachable CAIRO_STRUCT_API
+	cairo_reference (cr: CAIRO_STRUCT_API): detachable CAIRO_STRUCT_API 
 		do
 			if attached c_cairo_reference (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -47,63 +47,63 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_destroy (cr: CAIRO_STRUCT_API)
+	cairo_destroy (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_destroy (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_reference_count (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_reference_count (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_reference_count (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_user_data (cr: CAIRO_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_get_user_data (cr: CAIRO_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_get_user_data (cr.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_user_data (cr: CAIRO_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_set_user_data (cr: CAIRO_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_set_user_data (cr.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_save (cr: CAIRO_STRUCT_API)
+	cairo_save (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_save (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_restore (cr: CAIRO_STRUCT_API)
+	cairo_restore (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_restore (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_push_group (cr: CAIRO_STRUCT_API)
+	cairo_push_group (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_push_group (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_push_group_with_content (cr: CAIRO_STRUCT_API; content: INTEGER)
+	cairo_push_group_with_content (cr: CAIRO_STRUCT_API; content: INTEGER) 
 		do
 			c_cairo_push_group_with_content (cr.item, content)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pop_group (cr: CAIRO_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API
+	cairo_pop_group (cr: CAIRO_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_pop_group (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -113,399 +113,399 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_pop_group_to_source (cr: CAIRO_STRUCT_API)
+	cairo_pop_group_to_source (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_pop_group_to_source (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_operator (cr: CAIRO_STRUCT_API; op: INTEGER)
+	cairo_set_operator (cr: CAIRO_STRUCT_API; op: INTEGER) 
 		do
 			c_cairo_set_operator (cr.item, op)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_source (cr: CAIRO_STRUCT_API; source: CAIRO_PATTERN_STRUCT_API)
+	cairo_set_source (cr: CAIRO_STRUCT_API; source: CAIRO_PATTERN_STRUCT_API) 
 		do
 			c_cairo_set_source (cr.item, source.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_source_rgb (cr: CAIRO_STRUCT_API; red: REAL_64; green: REAL_64; blue: REAL_64)
+	cairo_set_source_rgb (cr: CAIRO_STRUCT_API; red: REAL_64; green: REAL_64; blue: REAL_64) 
 		do
 			c_cairo_set_source_rgb (cr.item, red, green, blue)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_source_rgba (cr: CAIRO_STRUCT_API; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
+	cairo_set_source_rgba (cr: CAIRO_STRUCT_API; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64) 
 		do
 			c_cairo_set_source_rgba (cr.item, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_source_surface (cr: CAIRO_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API; x: REAL_64; y: REAL_64)
+	cairo_set_source_surface (cr: CAIRO_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_set_source_surface (cr.item, surface.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_tolerance (cr: CAIRO_STRUCT_API; tolerance: REAL_64)
+	cairo_set_tolerance (cr: CAIRO_STRUCT_API; tolerance: REAL_64) 
 		do
 			c_cairo_set_tolerance (cr.item, tolerance)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_antialias (cr: CAIRO_STRUCT_API; antialias: INTEGER)
+	cairo_set_antialias (cr: CAIRO_STRUCT_API; antialias: INTEGER) 
 		do
 			c_cairo_set_antialias (cr.item, antialias)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_fill_rule (cr: CAIRO_STRUCT_API; fill_rule: INTEGER)
+	cairo_set_fill_rule (cr: CAIRO_STRUCT_API; fill_rule: INTEGER) 
 		do
 			c_cairo_set_fill_rule (cr.item, fill_rule)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_line_width (cr: CAIRO_STRUCT_API; width: REAL_64)
+	cairo_set_line_width (cr: CAIRO_STRUCT_API; width: REAL_64) 
 		do
 			c_cairo_set_line_width (cr.item, width)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_line_cap (cr: CAIRO_STRUCT_API; line_cap: INTEGER)
+	cairo_set_line_cap (cr: CAIRO_STRUCT_API; line_cap: INTEGER) 
 		do
 			c_cairo_set_line_cap (cr.item, line_cap)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_line_join (cr: CAIRO_STRUCT_API; line_join: INTEGER)
+	cairo_set_line_join (cr: CAIRO_STRUCT_API; line_join: INTEGER) 
 		do
 			c_cairo_set_line_join (cr.item, line_join)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_dash (cr: CAIRO_STRUCT_API; dashes: POINTER; num_dashes: INTEGER; offset: REAL_64)
+	cairo_set_dash (cr: CAIRO_STRUCT_API; dashes: POINTER; num_dashes: INTEGER; offset: REAL_64) 
 		do
 			c_cairo_set_dash (cr.item, dashes, num_dashes, offset)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_miter_limit (cr: CAIRO_STRUCT_API; limit: REAL_64)
+	cairo_set_miter_limit (cr: CAIRO_STRUCT_API; limit: REAL_64) 
 		do
 			c_cairo_set_miter_limit (cr.item, limit)
 		ensure
 			instance_free: class
 		end
 
-	cairo_translate (cr: CAIRO_STRUCT_API; tx: REAL_64; ty: REAL_64)
+	cairo_translate (cr: CAIRO_STRUCT_API; tx: REAL_64; ty: REAL_64) 
 		do
 			c_cairo_translate (cr.item, tx, ty)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scale (cr: CAIRO_STRUCT_API; sx: REAL_64; sy: REAL_64)
+	cairo_scale (cr: CAIRO_STRUCT_API; sx: REAL_64; sy: REAL_64) 
 		do
 			c_cairo_scale (cr.item, sx, sy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_rotate (cr: CAIRO_STRUCT_API; angle: REAL_64)
+	cairo_rotate (cr: CAIRO_STRUCT_API; angle: REAL_64) 
 		do
 			c_cairo_rotate (cr.item, angle)
 		ensure
 			instance_free: class
 		end
 
-	cairo_transform (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_transform (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_transform (cr.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_set_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_set_matrix (cr.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_identity_matrix (cr: CAIRO_STRUCT_API)
+	cairo_identity_matrix (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_identity_matrix (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_to_device (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER)
+	cairo_user_to_device (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER) 
 		do
 			c_cairo_user_to_device (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_to_device_distance (cr: CAIRO_STRUCT_API; dx: POINTER; dy: POINTER)
+	cairo_user_to_device_distance (cr: CAIRO_STRUCT_API; dx: POINTER; dy: POINTER) 
 		do
 			c_cairo_user_to_device_distance (cr.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_to_user (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER)
+	cairo_device_to_user (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER) 
 		do
 			c_cairo_device_to_user (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_to_user_distance (cr: CAIRO_STRUCT_API; dx: POINTER; dy: POINTER)
+	cairo_device_to_user_distance (cr: CAIRO_STRUCT_API; dx: POINTER; dy: POINTER) 
 		do
 			c_cairo_device_to_user_distance (cr.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_new_path (cr: CAIRO_STRUCT_API)
+	cairo_new_path (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_new_path (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_move_to (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64)
+	cairo_move_to (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_move_to (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_new_sub_path (cr: CAIRO_STRUCT_API)
+	cairo_new_sub_path (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_new_sub_path (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_line_to (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64)
+	cairo_line_to (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_line_to (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_curve_to (cr: CAIRO_STRUCT_API; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64)
+	cairo_curve_to (cr: CAIRO_STRUCT_API; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64) 
 		do
 			c_cairo_curve_to (cr.item, x1, y1, x2, y2, x3, y3)
 		ensure
 			instance_free: class
 		end
 
-	cairo_arc (cr: CAIRO_STRUCT_API; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64)
+	cairo_arc (cr: CAIRO_STRUCT_API; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64) 
 		do
 			c_cairo_arc (cr.item, xc, yc, radius, angle1, angle2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_arc_negative (cr: CAIRO_STRUCT_API; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64)
+	cairo_arc_negative (cr: CAIRO_STRUCT_API; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64) 
 		do
 			c_cairo_arc_negative (cr.item, xc, yc, radius, angle1, angle2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_rel_move_to (cr: CAIRO_STRUCT_API; dx: REAL_64; dy: REAL_64)
+	cairo_rel_move_to (cr: CAIRO_STRUCT_API; dx: REAL_64; dy: REAL_64) 
 		do
 			c_cairo_rel_move_to (cr.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_rel_line_to (cr: CAIRO_STRUCT_API; dx: REAL_64; dy: REAL_64)
+	cairo_rel_line_to (cr: CAIRO_STRUCT_API; dx: REAL_64; dy: REAL_64) 
 		do
 			c_cairo_rel_line_to (cr.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_rel_curve_to (cr: CAIRO_STRUCT_API; dx1: REAL_64; dy1: REAL_64; dx2: REAL_64; dy2: REAL_64; dx3: REAL_64; dy3: REAL_64)
+	cairo_rel_curve_to (cr: CAIRO_STRUCT_API; dx1: REAL_64; dy1: REAL_64; dx2: REAL_64; dy2: REAL_64; dx3: REAL_64; dy3: REAL_64) 
 		do
 			c_cairo_rel_curve_to (cr.item, dx1, dy1, dx2, dy2, dx3, dy3)
 		ensure
 			instance_free: class
 		end
 
-	cairo_rectangle (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64)
+	cairo_rectangle (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64) 
 		do
 			c_cairo_rectangle (cr.item, x, y, width, height)
 		ensure
 			instance_free: class
 		end
 
-	cairo_close_path (cr: CAIRO_STRUCT_API)
+	cairo_close_path (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_close_path (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_path_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
+	cairo_path_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER) 
 		do
 			c_cairo_path_extents (cr.item, x1, y1, x2, y2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_paint (cr: CAIRO_STRUCT_API)
+	cairo_paint (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_paint (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_paint_with_alpha (cr: CAIRO_STRUCT_API; alpha: REAL_64)
+	cairo_paint_with_alpha (cr: CAIRO_STRUCT_API; alpha: REAL_64) 
 		do
 			c_cairo_paint_with_alpha (cr.item, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mask (cr: CAIRO_STRUCT_API; pattern: CAIRO_PATTERN_STRUCT_API)
+	cairo_mask (cr: CAIRO_STRUCT_API; pattern: CAIRO_PATTERN_STRUCT_API) 
 		do
 			c_cairo_mask (cr.item, pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mask_surface (cr: CAIRO_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API; surface_x: REAL_64; surface_y: REAL_64)
+	cairo_mask_surface (cr: CAIRO_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API; surface_x: REAL_64; surface_y: REAL_64) 
 		do
 			c_cairo_mask_surface (cr.item, surface.item, surface_x, surface_y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_stroke (cr: CAIRO_STRUCT_API)
+	cairo_stroke (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_stroke (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_stroke_preserve (cr: CAIRO_STRUCT_API)
+	cairo_stroke_preserve (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_stroke_preserve (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_fill (cr: CAIRO_STRUCT_API)
+	cairo_fill (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_fill (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_fill_preserve (cr: CAIRO_STRUCT_API)
+	cairo_fill_preserve (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_fill_preserve (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_copy_page (cr: CAIRO_STRUCT_API)
+	cairo_copy_page (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_copy_page (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_show_page (cr: CAIRO_STRUCT_API)
+	cairo_show_page (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_show_page (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_in_stroke (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER
+	cairo_in_stroke (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER 
 		do
 			Result := c_cairo_in_stroke (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_in_fill (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER
+	cairo_in_fill (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER 
 		do
 			Result := c_cairo_in_fill (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_in_clip (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER
+	cairo_in_clip (cr: CAIRO_STRUCT_API; x: REAL_64; y: REAL_64): INTEGER 
 		do
 			Result := c_cairo_in_clip (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_stroke_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
+	cairo_stroke_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER) 
 		do
 			c_cairo_stroke_extents (cr.item, x1, y1, x2, y2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_fill_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
+	cairo_fill_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER) 
 		do
 			c_cairo_fill_extents (cr.item, x1, y1, x2, y2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_reset_clip (cr: CAIRO_STRUCT_API)
+	cairo_reset_clip (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_reset_clip (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_clip (cr: CAIRO_STRUCT_API)
+	cairo_clip (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_clip (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_clip_preserve (cr: CAIRO_STRUCT_API)
+	cairo_clip_preserve (cr: CAIRO_STRUCT_API) 
 		do
 			c_cairo_clip_preserve (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_clip_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
+	cairo_clip_extents (cr: CAIRO_STRUCT_API; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER) 
 		do
 			c_cairo_clip_extents (cr.item, x1, y1, x2, y2)
 		ensure
 			instance_free: class
 		end
 
-	cairo_copy_clip_rectangle_list (cr: CAIRO_STRUCT_API): detachable CAIRO_RECTANGLE_LIST_STRUCT_API
+	cairo_copy_clip_rectangle_list (cr: CAIRO_STRUCT_API): detachable CAIRO_RECTANGLE_LIST_STRUCT_API 
 		do
 			if attached c_cairo_copy_clip_rectangle_list (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -515,14 +515,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_rectangle_list_destroy (rectangle_list: CAIRO_RECTANGLE_LIST_STRUCT_API)
+	cairo_rectangle_list_destroy (rectangle_list: CAIRO_RECTANGLE_LIST_STRUCT_API) 
 		do
 			c_cairo_rectangle_list_destroy (rectangle_list.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_tag_begin (cr: CAIRO_STRUCT_API; tag_name: STRING_8; attributes: STRING_8)
+	cairo_tag_begin (cr: CAIRO_STRUCT_API; tag_name: STRING_8; attributes: STRING_8) 
 		local
 			tag_name_c_string: C_STRING
 			attributes_c_string: C_STRING
@@ -534,7 +534,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_tag_end (cr: CAIRO_STRUCT_API; tag_name: STRING_8)
+	cairo_tag_end (cr: CAIRO_STRUCT_API; tag_name: STRING_8) 
 		local
 			tag_name_c_string: C_STRING
 		do
@@ -546,14 +546,14 @@ feature -- Access
 
 	cairo_glyph_allocate (num_glyphs: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_glyph_allocate ((int)$num_glyphs);
 			]"
 		end
 
-	cairo_glyph_free (glyphs: CAIRO_GLYPH_T_STRUCT_API)
+	cairo_glyph_free (glyphs: CAIRO_GLYPH_T_STRUCT_API) 
 		do
 			c_cairo_glyph_free (glyphs.item)
 		ensure
@@ -562,21 +562,21 @@ feature -- Access
 
 	cairo_text_cluster_allocate (num_clusters: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_text_cluster_allocate ((int)$num_clusters);
 			]"
 		end
 
-	cairo_text_cluster_free (clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API)
+	cairo_text_cluster_free (clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API) 
 		do
 			c_cairo_text_cluster_free (clusters.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_create: detachable CAIRO_FONT_OPTIONS_STRUCT_API
+	cairo_font_options_create: detachable CAIRO_FONT_OPTIONS_STRUCT_API 
 		do
 			if attached c_cairo_font_options_create as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -586,7 +586,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_font_options_copy (original: CAIRO_FONT_OPTIONS_STRUCT_API): detachable CAIRO_FONT_OPTIONS_STRUCT_API
+	cairo_font_options_copy (original: CAIRO_FONT_OPTIONS_STRUCT_API): detachable CAIRO_FONT_OPTIONS_STRUCT_API 
 		do
 			if attached c_cairo_font_options_copy (original.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -596,105 +596,105 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_font_options_destroy (options: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_font_options_destroy (options: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_font_options_destroy (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_status (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_status (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_status (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_merge (options: CAIRO_FONT_OPTIONS_STRUCT_API; other: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_font_options_merge (options: CAIRO_FONT_OPTIONS_STRUCT_API; other: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_font_options_merge (options.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_equal (options: CAIRO_FONT_OPTIONS_STRUCT_API; other: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_equal (options: CAIRO_FONT_OPTIONS_STRUCT_API; other: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_equal (options.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_hash (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_hash (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_hash (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_set_antialias (options: CAIRO_FONT_OPTIONS_STRUCT_API; antialias: INTEGER)
+	cairo_font_options_set_antialias (options: CAIRO_FONT_OPTIONS_STRUCT_API; antialias: INTEGER) 
 		do
 			c_cairo_font_options_set_antialias (options.item, antialias)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_get_antialias (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_get_antialias (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_get_antialias (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_set_subpixel_order (options: CAIRO_FONT_OPTIONS_STRUCT_API; subpixel_order: INTEGER)
+	cairo_font_options_set_subpixel_order (options: CAIRO_FONT_OPTIONS_STRUCT_API; subpixel_order: INTEGER) 
 		do
 			c_cairo_font_options_set_subpixel_order (options.item, subpixel_order)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_get_subpixel_order (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_get_subpixel_order (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_get_subpixel_order (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_set_hint_style (options: CAIRO_FONT_OPTIONS_STRUCT_API; hint_style: INTEGER)
+	cairo_font_options_set_hint_style (options: CAIRO_FONT_OPTIONS_STRUCT_API; hint_style: INTEGER) 
 		do
 			c_cairo_font_options_set_hint_style (options.item, hint_style)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_get_hint_style (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_get_hint_style (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_get_hint_style (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_set_hint_metrics (options: CAIRO_FONT_OPTIONS_STRUCT_API; hint_metrics: INTEGER)
+	cairo_font_options_set_hint_metrics (options: CAIRO_FONT_OPTIONS_STRUCT_API; hint_metrics: INTEGER) 
 		do
 			c_cairo_font_options_set_hint_metrics (options.item, hint_metrics)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_get_hint_metrics (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER
+	cairo_font_options_get_hint_metrics (options: CAIRO_FONT_OPTIONS_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_options_get_hint_metrics (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_get_variations (options: CAIRO_FONT_OPTIONS_STRUCT_API): POINTER
+	cairo_font_options_get_variations (options: CAIRO_FONT_OPTIONS_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_font_options_get_variations (options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_options_set_variations (options: CAIRO_FONT_OPTIONS_STRUCT_API; variations: STRING_8)
+	cairo_font_options_set_variations (options: CAIRO_FONT_OPTIONS_STRUCT_API; variations: STRING_8) 
 		local
 			variations_c_string: C_STRING
 		do
@@ -704,7 +704,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_select_font_face (cr: CAIRO_STRUCT_API; family: STRING_8; slant: INTEGER; weight: INTEGER)
+	cairo_select_font_face (cr: CAIRO_STRUCT_API; family: STRING_8; slant: INTEGER; weight: INTEGER) 
 		local
 			family_c_string: C_STRING
 		do
@@ -714,49 +714,49 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_set_font_size (cr: CAIRO_STRUCT_API; size: REAL_64)
+	cairo_set_font_size (cr: CAIRO_STRUCT_API; size: REAL_64) 
 		do
 			c_cairo_set_font_size (cr.item, size)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_font_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_set_font_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_set_font_matrix (cr.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_font_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_get_font_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_get_font_matrix (cr.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_font_options (cr: CAIRO_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_set_font_options (cr: CAIRO_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_set_font_options (cr.item, options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_font_options (cr: CAIRO_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_get_font_options (cr: CAIRO_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_get_font_options (cr.item, options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_set_font_face (cr: CAIRO_STRUCT_API; font_face: CAIRO_FONT_FACE_STRUCT_API)
+	cairo_set_font_face (cr: CAIRO_STRUCT_API; font_face: CAIRO_FONT_FACE_STRUCT_API) 
 		do
 			c_cairo_set_font_face (cr.item, font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_font_face (cr: CAIRO_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API
+	cairo_get_font_face (cr: CAIRO_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API 
 		do
 			if attached c_cairo_get_font_face (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -766,14 +766,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_set_scaled_font (cr: CAIRO_STRUCT_API; scaled_font: CAIRO_SCALED_FONT_STRUCT_API)
+	cairo_set_scaled_font (cr: CAIRO_STRUCT_API; scaled_font: CAIRO_SCALED_FONT_STRUCT_API) 
 		do
 			c_cairo_set_scaled_font (cr.item, scaled_font.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_scaled_font (cr: CAIRO_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API
+	cairo_get_scaled_font (cr: CAIRO_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API 
 		do
 			if attached c_cairo_get_scaled_font (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -783,7 +783,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_show_text (cr: CAIRO_STRUCT_API; utf8: STRING_8)
+	cairo_show_text (cr: CAIRO_STRUCT_API; utf8: STRING_8) 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -793,14 +793,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_show_glyphs (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER)
+	cairo_show_glyphs (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER) 
 		do
 			c_cairo_show_glyphs (cr.item, glyphs.item, num_glyphs)
 		ensure
 			instance_free: class
 		end
 
-	cairo_show_text_glyphs (cr: CAIRO_STRUCT_API; utf8: STRING_8; utf8_len: INTEGER; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API; num_clusters: INTEGER; cluster_flags: INTEGER)
+	cairo_show_text_glyphs (cr: CAIRO_STRUCT_API; utf8: STRING_8; utf8_len: INTEGER; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API; num_clusters: INTEGER; cluster_flags: INTEGER) 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -810,7 +810,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_text_path (cr: CAIRO_STRUCT_API; utf8: STRING_8)
+	cairo_text_path (cr: CAIRO_STRUCT_API; utf8: STRING_8) 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -820,14 +820,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_glyph_path (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER)
+	cairo_glyph_path (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER) 
 		do
 			c_cairo_glyph_path (cr.item, glyphs.item, num_glyphs)
 		ensure
 			instance_free: class
 		end
 
-	cairo_text_extents (cr: CAIRO_STRUCT_API; utf8: STRING_8; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API)
+	cairo_text_extents (cr: CAIRO_STRUCT_API; utf8: STRING_8; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API) 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -837,21 +837,21 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_glyph_extents (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API)
+	cairo_glyph_extents (cr: CAIRO_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API) 
 		do
 			c_cairo_glyph_extents (cr.item, glyphs.item, num_glyphs, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_extents (cr: CAIRO_STRUCT_API; extents: CAIRO_FONT_EXTENTS_T_STRUCT_API)
+	cairo_font_extents (cr: CAIRO_STRUCT_API; extents: CAIRO_FONT_EXTENTS_T_STRUCT_API) 
 		do
 			c_cairo_font_extents (cr.item, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_reference (font_face: CAIRO_FONT_FACE_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API
+	cairo_font_face_reference (font_face: CAIRO_FONT_FACE_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API 
 		do
 			if attached c_cairo_font_face_reference (font_face.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -861,49 +861,49 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_font_face_destroy (font_face: CAIRO_FONT_FACE_STRUCT_API)
+	cairo_font_face_destroy (font_face: CAIRO_FONT_FACE_STRUCT_API) 
 		do
 			c_cairo_font_face_destroy (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_get_reference_count (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER
+	cairo_font_face_get_reference_count (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_face_get_reference_count (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_status (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER
+	cairo_font_face_status (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_face_status (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_get_type (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER
+	cairo_font_face_get_type (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_font_face_get_type (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_get_user_data (font_face: CAIRO_FONT_FACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_font_face_get_user_data (font_face: CAIRO_FONT_FACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_font_face_get_user_data (font_face.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_font_face_set_user_data (font_face: CAIRO_FONT_FACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_font_face_set_user_data (font_face: CAIRO_FONT_FACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_font_face_set_user_data (font_face.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_create (font_face: CAIRO_FONT_FACE_STRUCT_API; font_matrix: CAIRO_MATRIX_STRUCT_API; ctm: CAIRO_MATRIX_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API
+	cairo_scaled_font_create (font_face: CAIRO_FONT_FACE_STRUCT_API; font_matrix: CAIRO_MATRIX_STRUCT_API; ctm: CAIRO_MATRIX_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API 
 		do
 			if attached c_cairo_scaled_font_create (font_face.item, font_matrix.item, ctm.item, options.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -913,7 +913,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_scaled_font_reference (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API
+	cairo_scaled_font_reference (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): detachable CAIRO_SCALED_FONT_STRUCT_API 
 		do
 			if attached c_cairo_scaled_font_reference (scaled_font.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -923,56 +923,56 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_scaled_font_destroy (scaled_font: CAIRO_SCALED_FONT_STRUCT_API)
+	cairo_scaled_font_destroy (scaled_font: CAIRO_SCALED_FONT_STRUCT_API) 
 		do
 			c_cairo_scaled_font_destroy (scaled_font.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_reference_count (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER
+	cairo_scaled_font_get_reference_count (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_scaled_font_get_reference_count (scaled_font.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_status (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER
+	cairo_scaled_font_status (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_scaled_font_status (scaled_font.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_type (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER
+	cairo_scaled_font_get_type (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_scaled_font_get_type (scaled_font.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_user_data (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_scaled_font_get_user_data (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_scaled_font_get_user_data (scaled_font.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_set_user_data (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_scaled_font_set_user_data (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_scaled_font_set_user_data (scaled_font.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; extents: CAIRO_FONT_EXTENTS_T_STRUCT_API)
+	cairo_scaled_font_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; extents: CAIRO_FONT_EXTENTS_T_STRUCT_API) 
 		do
 			c_cairo_scaled_font_extents (scaled_font.item, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_text_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; utf8: STRING_8; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API)
+	cairo_scaled_font_text_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; utf8: STRING_8; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API) 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -982,14 +982,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_scaled_font_glyph_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API)
+	cairo_scaled_font_glyph_extents (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: INTEGER; extents: CAIRO_TEXT_EXTENTS_T_STRUCT_API) 
 		do
 			c_cairo_scaled_font_glyph_extents (scaled_font.item, glyphs.item, num_glyphs, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_text_to_glyphs (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; x: REAL_64; y: REAL_64; utf8: STRING_8; utf8_len: INTEGER; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: POINTER; clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API; num_clusters: POINTER; cluster_flags: POINTER): INTEGER
+	cairo_scaled_font_text_to_glyphs (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; x: REAL_64; y: REAL_64; utf8: STRING_8; utf8_len: INTEGER; glyphs: CAIRO_GLYPH_T_STRUCT_API; num_glyphs: POINTER; clusters: CAIRO_TEXT_CLUSTER_T_STRUCT_API; num_clusters: POINTER; cluster_flags: POINTER): INTEGER 
 		local
 			utf8_c_string: C_STRING
 		do
@@ -999,7 +999,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_font_face (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API
+	cairo_scaled_font_get_font_face (scaled_font: CAIRO_SCALED_FONT_STRUCT_API): detachable CAIRO_FONT_FACE_STRUCT_API 
 		do
 			if attached c_cairo_scaled_font_get_font_face (scaled_font.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1009,35 +1009,35 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_font_matrix (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; font_matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_scaled_font_get_font_matrix (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; font_matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_scaled_font_get_font_matrix (scaled_font.item, font_matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_ctm (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; ctm: CAIRO_MATRIX_STRUCT_API)
+	cairo_scaled_font_get_ctm (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; ctm: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_scaled_font_get_ctm (scaled_font.item, ctm.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_scale_matrix (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; scale_matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_scaled_font_get_scale_matrix (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; scale_matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_scaled_font_get_scale_matrix (scaled_font.item, scale_matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_scaled_font_get_font_options (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_scaled_font_get_font_options (scaled_font: CAIRO_SCALED_FONT_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_scaled_font_get_font_options (scaled_font.item, options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_toy_font_face_create (family: STRING_8; slant: INTEGER; weight: INTEGER): detachable CAIRO_FONT_FACE_STRUCT_API
+	cairo_toy_font_face_create (family: STRING_8; slant: INTEGER; weight: INTEGER): detachable CAIRO_FONT_FACE_STRUCT_API 
 		local
 			family_c_string: C_STRING
 		do
@@ -1050,28 +1050,28 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_toy_font_face_get_family (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER
+	cairo_toy_font_face_get_family (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_toy_font_face_get_family (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_toy_font_face_get_slant (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER
+	cairo_toy_font_face_get_slant (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_toy_font_face_get_slant (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_toy_font_face_get_weight (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER
+	cairo_toy_font_face_get_weight (font_face: CAIRO_FONT_FACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_toy_font_face_get_weight (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_create: detachable CAIRO_FONT_FACE_STRUCT_API
+	cairo_user_font_face_create: detachable CAIRO_FONT_FACE_STRUCT_API 
 		do
 			if attached c_cairo_user_font_face_create as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1081,70 +1081,70 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_user_font_face_set_init_func (font_face: CAIRO_FONT_FACE_STRUCT_API; init_func: POINTER)
+	cairo_user_font_face_set_init_func (font_face: CAIRO_FONT_FACE_STRUCT_API; init_func: POINTER) 
 		do
 			c_cairo_user_font_face_set_init_func (font_face.item, init_func)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_set_render_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API; render_glyph_func: POINTER)
+	cairo_user_font_face_set_render_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API; render_glyph_func: POINTER) 
 		do
 			c_cairo_user_font_face_set_render_glyph_func (font_face.item, render_glyph_func)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_set_text_to_glyphs_func (font_face: CAIRO_FONT_FACE_STRUCT_API; text_to_glyphs_func: POINTER)
+	cairo_user_font_face_set_text_to_glyphs_func (font_face: CAIRO_FONT_FACE_STRUCT_API; text_to_glyphs_func: POINTER) 
 		do
 			c_cairo_user_font_face_set_text_to_glyphs_func (font_face.item, text_to_glyphs_func)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_set_unicode_to_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API; unicode_to_glyph_func: POINTER)
+	cairo_user_font_face_set_unicode_to_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API; unicode_to_glyph_func: POINTER) 
 		do
 			c_cairo_user_font_face_set_unicode_to_glyph_func (font_face.item, unicode_to_glyph_func)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_get_init_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER
+	cairo_user_font_face_get_init_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_user_font_face_get_init_func (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_get_render_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER
+	cairo_user_font_face_get_render_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_user_font_face_get_render_glyph_func (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_get_text_to_glyphs_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER
+	cairo_user_font_face_get_text_to_glyphs_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_user_font_face_get_text_to_glyphs_func (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_user_font_face_get_unicode_to_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER
+	cairo_user_font_face_get_unicode_to_glyph_func (font_face: CAIRO_FONT_FACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_user_font_face_get_unicode_to_glyph_func (font_face.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_operator (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_operator (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_operator (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_source (cr: CAIRO_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API
+	cairo_get_source (cr: CAIRO_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_get_source (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1154,91 +1154,91 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_get_tolerance (cr: CAIRO_STRUCT_API): REAL_64
+	cairo_get_tolerance (cr: CAIRO_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_get_tolerance (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_antialias (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_antialias (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_antialias (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_has_current_point (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_has_current_point (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_has_current_point (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_current_point (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER)
+	cairo_get_current_point (cr: CAIRO_STRUCT_API; x: POINTER; y: POINTER) 
 		do
 			c_cairo_get_current_point (cr.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_fill_rule (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_fill_rule (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_fill_rule (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_line_width (cr: CAIRO_STRUCT_API): REAL_64
+	cairo_get_line_width (cr: CAIRO_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_get_line_width (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_line_cap (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_line_cap (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_line_cap (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_line_join (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_line_join (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_line_join (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_miter_limit (cr: CAIRO_STRUCT_API): REAL_64
+	cairo_get_miter_limit (cr: CAIRO_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_get_miter_limit (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_dash_count (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_get_dash_count (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_get_dash_count (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_dash (cr: CAIRO_STRUCT_API; dashes: POINTER; offset: POINTER)
+	cairo_get_dash (cr: CAIRO_STRUCT_API; dashes: POINTER; offset: POINTER) 
 		do
 			c_cairo_get_dash (cr.item, dashes, offset)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_get_matrix (cr: CAIRO_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_get_matrix (cr.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_get_target (cr: CAIRO_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_get_target (cr: CAIRO_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_get_target (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1248,7 +1248,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_get_group_target (cr: CAIRO_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_get_group_target (cr: CAIRO_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_get_group_target (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1258,7 +1258,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_copy_path (cr: CAIRO_STRUCT_API): detachable CAIRO_PATH_STRUCT_API
+	cairo_copy_path (cr: CAIRO_STRUCT_API): detachable CAIRO_PATH_STRUCT_API 
 		do
 			if attached c_cairo_copy_path (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1268,7 +1268,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_copy_path_flat (cr: CAIRO_STRUCT_API): detachable CAIRO_PATH_STRUCT_API
+	cairo_copy_path_flat (cr: CAIRO_STRUCT_API): detachable CAIRO_PATH_STRUCT_API 
 		do
 			if attached c_cairo_copy_path_flat (cr.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1278,35 +1278,35 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_append_path (cr: CAIRO_STRUCT_API; path: CAIRO_PATH_STRUCT_API)
+	cairo_append_path (cr: CAIRO_STRUCT_API; path: CAIRO_PATH_STRUCT_API) 
 		do
 			c_cairo_append_path (cr.item, path.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_path_destroy (path: CAIRO_PATH_STRUCT_API)
+	cairo_path_destroy (path: CAIRO_PATH_STRUCT_API) 
 		do
 			c_cairo_path_destroy (path.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_status (cr: CAIRO_STRUCT_API): INTEGER
+	cairo_status (cr: CAIRO_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_status (cr.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_status_to_string (status: INTEGER): POINTER
+	cairo_status_to_string (status: INTEGER): POINTER 
 		do
 			Result := c_cairo_status_to_string (status)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_reference (device: CAIRO_DEVICE_STRUCT_API): detachable CAIRO_DEVICE_STRUCT_API
+	cairo_device_reference (device: CAIRO_DEVICE_STRUCT_API): detachable CAIRO_DEVICE_STRUCT_API 
 		do
 			if attached c_cairo_device_reference (device.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1316,77 +1316,77 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_device_get_type (device: CAIRO_DEVICE_STRUCT_API): INTEGER
+	cairo_device_get_type (device: CAIRO_DEVICE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_device_get_type (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_status (device: CAIRO_DEVICE_STRUCT_API): INTEGER
+	cairo_device_status (device: CAIRO_DEVICE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_device_status (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_acquire (device: CAIRO_DEVICE_STRUCT_API): INTEGER
+	cairo_device_acquire (device: CAIRO_DEVICE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_device_acquire (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_release (device: CAIRO_DEVICE_STRUCT_API)
+	cairo_device_release (device: CAIRO_DEVICE_STRUCT_API) 
 		do
 			c_cairo_device_release (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_flush (device: CAIRO_DEVICE_STRUCT_API)
+	cairo_device_flush (device: CAIRO_DEVICE_STRUCT_API) 
 		do
 			c_cairo_device_flush (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_finish (device: CAIRO_DEVICE_STRUCT_API)
+	cairo_device_finish (device: CAIRO_DEVICE_STRUCT_API) 
 		do
 			c_cairo_device_finish (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_destroy (device: CAIRO_DEVICE_STRUCT_API)
+	cairo_device_destroy (device: CAIRO_DEVICE_STRUCT_API) 
 		do
 			c_cairo_device_destroy (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_get_reference_count (device: CAIRO_DEVICE_STRUCT_API): INTEGER
+	cairo_device_get_reference_count (device: CAIRO_DEVICE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_device_get_reference_count (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_get_user_data (device: CAIRO_DEVICE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_device_get_user_data (device: CAIRO_DEVICE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_device_get_user_data (device.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_set_user_data (device: CAIRO_DEVICE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_device_set_user_data (device: CAIRO_DEVICE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_device_set_user_data (device.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_create_similar (other: CAIRO_SURFACE_STRUCT_API; content: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_create_similar (other: CAIRO_SURFACE_STRUCT_API; content: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_create_similar (other.item, content, width, height) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1396,7 +1396,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_create_similar_image (other: CAIRO_SURFACE_STRUCT_API; format: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_create_similar_image (other: CAIRO_SURFACE_STRUCT_API; format: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_create_similar_image (other.item, format, width, height) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1406,7 +1406,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_map_to_image (surface: CAIRO_SURFACE_STRUCT_API; extents: CAIRO_RECTANGLE_INT_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_map_to_image (surface: CAIRO_SURFACE_STRUCT_API; extents: CAIRO_RECTANGLE_INT_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_map_to_image (surface.item, extents.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1416,14 +1416,14 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_unmap_image (surface: CAIRO_SURFACE_STRUCT_API; image: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_unmap_image (surface: CAIRO_SURFACE_STRUCT_API; image: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_unmap_image (surface.item, image.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_create_for_rectangle (target: CAIRO_SURFACE_STRUCT_API; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_create_for_rectangle (target: CAIRO_SURFACE_STRUCT_API; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_create_for_rectangle (target.item, x, y, width, height) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1433,7 +1433,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_create_observer (target: CAIRO_SURFACE_STRUCT_API; mode: INTEGER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_create_observer (target: CAIRO_SURFACE_STRUCT_API; mode: INTEGER): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_create_observer (target.item, mode) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1443,119 +1443,119 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_paint_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_paint_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_paint_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_mask_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_mask_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_mask_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_fill_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_fill_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_fill_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_stroke_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_stroke_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_stroke_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_glyphs_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_glyphs_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_glyphs_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_flush_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_flush_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_flush_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_add_finish_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER
+	cairo_surface_observer_add_finish_callback (abstract_surface: CAIRO_SURFACE_STRUCT_API; func: POINTER; data: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_add_finish_callback (abstract_surface.item, func, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_print (surface: CAIRO_SURFACE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER
+	cairo_surface_observer_print (surface: CAIRO_SURFACE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_observer_print (surface.item, write_func, closure)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_observer_elapsed (surface: CAIRO_SURFACE_STRUCT_API): REAL_64
+	cairo_surface_observer_elapsed (surface: CAIRO_SURFACE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_surface_observer_elapsed (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_print (device: CAIRO_DEVICE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER
+	cairo_device_observer_print (device: CAIRO_DEVICE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER 
 		do
 			Result := c_cairo_device_observer_print (device.item, write_func, closure)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_paint_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_paint_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_paint_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_mask_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_mask_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_mask_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_fill_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_fill_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_fill_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_stroke_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_stroke_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_stroke_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_device_observer_glyphs_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64
+	cairo_device_observer_glyphs_elapsed (device: CAIRO_DEVICE_STRUCT_API): REAL_64 
 		do
 			Result := c_cairo_device_observer_glyphs_elapsed (device.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_reference (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_surface_reference (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_surface_reference (surface.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1565,21 +1565,21 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_finish (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_finish (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_finish (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_destroy (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_destroy (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_destroy (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_device (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_DEVICE_STRUCT_API
+	cairo_surface_get_device (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_DEVICE_STRUCT_API 
 		do
 			if attached c_cairo_surface_get_device (surface.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1589,35 +1589,35 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_get_reference_count (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_surface_get_reference_count (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_surface_get_reference_count (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_status (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_surface_status (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_surface_status (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_type (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_surface_get_type (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_surface_get_type (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_content (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_surface_get_content (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_surface_get_content (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_write_to_png (surface: CAIRO_SURFACE_STRUCT_API; filename: STRING_8): INTEGER
+	cairo_surface_write_to_png (surface: CAIRO_SURFACE_STRUCT_API; filename: STRING_8): INTEGER 
 		local
 			filename_c_string: C_STRING
 		do
@@ -1627,28 +1627,28 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_write_to_png_stream (surface: CAIRO_SURFACE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER
+	cairo_surface_write_to_png_stream (surface: CAIRO_SURFACE_STRUCT_API; write_func: POINTER; closure: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_write_to_png_stream (surface.item, write_func, closure)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_user_data (surface: CAIRO_SURFACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_surface_get_user_data (surface: CAIRO_SURFACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_surface_get_user_data (surface.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_set_user_data (surface: CAIRO_SURFACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_surface_set_user_data (surface: CAIRO_SURFACE_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_surface_set_user_data (surface.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_mime_data (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8; data: POINTER; length: POINTER)
+	cairo_surface_get_mime_data (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8; data: POINTER; length: POINTER) 
 		local
 			mime_type_c_string: C_STRING
 		do
@@ -1658,7 +1658,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_set_mime_data (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8; data: STRING_8; length: INTEGER; destroy: POINTER; closure: POINTER): INTEGER
+	cairo_surface_set_mime_data (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8; data: STRING_8; length: INTEGER; destroy: POINTER; closure: POINTER): INTEGER 
 		local
 			mime_type_c_string: C_STRING
 			data_c_string: C_STRING
@@ -1670,7 +1670,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_supports_mime_type (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8): INTEGER
+	cairo_surface_supports_mime_type (surface: CAIRO_SURFACE_STRUCT_API; mime_type: STRING_8): INTEGER 
 		local
 			mime_type_c_string: C_STRING
 		do
@@ -1680,114 +1680,115 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_surface_get_font_options (surface: CAIRO_SURFACE_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API)
+	cairo_surface_get_font_options (surface: CAIRO_SURFACE_STRUCT_API; options: CAIRO_FONT_OPTIONS_STRUCT_API) 
 		do
 			c_cairo_surface_get_font_options (surface.item, options.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_flush (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_flush (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_flush (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_mark_dirty (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_mark_dirty (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_mark_dirty (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_mark_dirty_rectangle (surface: CAIRO_SURFACE_STRUCT_API; x: INTEGER; y: INTEGER; width: INTEGER; height: INTEGER)
+	cairo_surface_mark_dirty_rectangle (surface: CAIRO_SURFACE_STRUCT_API; x: INTEGER; y: INTEGER; width: INTEGER; height: INTEGER) 
 		do
 			c_cairo_surface_mark_dirty_rectangle (surface.item, x, y, width, height)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_set_device_scale (surface: CAIRO_SURFACE_STRUCT_API; x_scale: REAL_64; y_scale: REAL_64)
+	cairo_surface_set_device_scale (surface: CAIRO_SURFACE_STRUCT_API; x_scale: REAL_64; y_scale: REAL_64) 
 		do
 			c_cairo_surface_set_device_scale (surface.item, x_scale, y_scale)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_device_scale (surface: CAIRO_SURFACE_STRUCT_API; x_scale: POINTER; y_scale: POINTER)
+	cairo_surface_get_device_scale (surface: CAIRO_SURFACE_STRUCT_API; x_scale: POINTER; y_scale: POINTER) 
 		do
 			c_cairo_surface_get_device_scale (surface.item, x_scale, y_scale)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_set_device_offset (surface: CAIRO_SURFACE_STRUCT_API; x_offset: REAL_64; y_offset: REAL_64)
+	cairo_surface_set_device_offset (surface: CAIRO_SURFACE_STRUCT_API; x_offset: REAL_64; y_offset: REAL_64) 
 		do
 			c_cairo_surface_set_device_offset (surface.item, x_offset, y_offset)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_device_offset (surface: CAIRO_SURFACE_STRUCT_API; x_offset: POINTER; y_offset: POINTER)
+	cairo_surface_get_device_offset (surface: CAIRO_SURFACE_STRUCT_API; x_offset: POINTER; y_offset: POINTER) 
 		do
 			c_cairo_surface_get_device_offset (surface.item, x_offset, y_offset)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_set_fallback_resolution (surface: CAIRO_SURFACE_STRUCT_API; x_pixels_per_inch: REAL_64; y_pixels_per_inch: REAL_64)
+	cairo_surface_set_fallback_resolution (surface: CAIRO_SURFACE_STRUCT_API; x_pixels_per_inch: REAL_64; y_pixels_per_inch: REAL_64) 
 		do
 			c_cairo_surface_set_fallback_resolution (surface.item, x_pixels_per_inch, y_pixels_per_inch)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_get_fallback_resolution (surface: CAIRO_SURFACE_STRUCT_API; x_pixels_per_inch: POINTER; y_pixels_per_inch: POINTER)
+	cairo_surface_get_fallback_resolution (surface: CAIRO_SURFACE_STRUCT_API; x_pixels_per_inch: POINTER; y_pixels_per_inch: POINTER) 
 		do
 			c_cairo_surface_get_fallback_resolution (surface.item, x_pixels_per_inch, y_pixels_per_inch)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_copy_page (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_copy_page (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_copy_page (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_show_page (surface: CAIRO_SURFACE_STRUCT_API)
+	cairo_surface_show_page (surface: CAIRO_SURFACE_STRUCT_API) 
 		do
 			c_cairo_surface_show_page (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_surface_has_show_text_glyphs (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_surface_has_show_text_glyphs (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_surface_has_show_text_glyphs (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_create (format: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_image_surface_create (format: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_image_surface_create (format, width, height) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
 			end
+
 		ensure
 			instance_free: class
 		end
 
-	cairo_format_stride_for_width (format: INTEGER; width: INTEGER): INTEGER
+	cairo_format_stride_for_width (format: INTEGER; width: INTEGER): INTEGER 
 		do
 			Result := c_cairo_format_stride_for_width (format, width)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_create_for_data (data: STRING_8; format: INTEGER; width: INTEGER; height: INTEGER; stride: INTEGER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_image_surface_create_for_data (data: STRING_8; format: INTEGER; width: INTEGER; height: INTEGER; stride: INTEGER): detachable CAIRO_SURFACE_STRUCT_API 
 		local
 			data_c_string: C_STRING
 		do
@@ -1800,35 +1801,35 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_image_surface_get_data (surface: CAIRO_SURFACE_STRUCT_API): POINTER
+	cairo_image_surface_get_data (surface: CAIRO_SURFACE_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_image_surface_get_data (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_get_format (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_image_surface_get_format (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_image_surface_get_format (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_get_width (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_image_surface_get_width (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_image_surface_get_width (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_get_height (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_image_surface_get_height (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_image_surface_get_height (surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_image_surface_get_stride (surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_image_surface_get_stride (surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_image_surface_get_stride (surface.item)
 		ensure
@@ -1837,14 +1838,14 @@ feature -- Access
 
 	cairo_image_surface_create_from_png (filename: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_create_from_png ((char const*)$filename);
 			]"
 		end
 
-	cairo_image_surface_create_from_png_stream (read_func: POINTER; closure: POINTER): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_image_surface_create_from_png_stream (read_func: POINTER; closure: POINTER): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_image_surface_create_from_png_stream (read_func, closure) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1854,7 +1855,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_recording_surface_create (content: INTEGER; extents: CAIRO_RECTANGLE_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API
+	cairo_recording_surface_create (content: INTEGER; extents: CAIRO_RECTANGLE_STRUCT_API): detachable CAIRO_SURFACE_STRUCT_API 
 		do
 			if attached c_cairo_recording_surface_create (content, extents.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1864,21 +1865,21 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_recording_surface_ink_extents (surface: CAIRO_SURFACE_STRUCT_API; x0: POINTER; y0: POINTER; width: POINTER; height: POINTER)
+	cairo_recording_surface_ink_extents (surface: CAIRO_SURFACE_STRUCT_API; x0: POINTER; y0: POINTER; width: POINTER; height: POINTER) 
 		do
 			c_cairo_recording_surface_ink_extents (surface.item, x0, y0, width, height)
 		ensure
 			instance_free: class
 		end
 
-	cairo_recording_surface_get_extents (surface: CAIRO_SURFACE_STRUCT_API; extents: CAIRO_RECTANGLE_STRUCT_API): INTEGER
+	cairo_recording_surface_get_extents (surface: CAIRO_SURFACE_STRUCT_API; extents: CAIRO_RECTANGLE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_recording_surface_get_extents (surface.item, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_create_raster_source (user_data: POINTER; content: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_PATTERN_STRUCT_API
+	cairo_pattern_create_raster_source (user_data: POINTER; content: INTEGER; width: INTEGER; height: INTEGER): detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_pattern_create_raster_source (user_data, content, width, height) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1888,70 +1889,70 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_set_callback_data (pattern: CAIRO_PATTERN_STRUCT_API; data: POINTER)
+	cairo_raster_source_pattern_set_callback_data (pattern: CAIRO_PATTERN_STRUCT_API; data: POINTER) 
 		do
 			c_cairo_raster_source_pattern_set_callback_data (pattern.item, data)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_get_callback_data (pattern: CAIRO_PATTERN_STRUCT_API): POINTER
+	cairo_raster_source_pattern_get_callback_data (pattern: CAIRO_PATTERN_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_raster_source_pattern_get_callback_data (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_set_acquire (pattern: CAIRO_PATTERN_STRUCT_API; acquire: POINTER; release: POINTER)
+	cairo_raster_source_pattern_set_acquire (pattern: CAIRO_PATTERN_STRUCT_API; acquire: POINTER; release: POINTER) 
 		do
 			c_cairo_raster_source_pattern_set_acquire (pattern.item, acquire, release)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_get_acquire (pattern: CAIRO_PATTERN_STRUCT_API; acquire: POINTER; release: POINTER)
+	cairo_raster_source_pattern_get_acquire (pattern: CAIRO_PATTERN_STRUCT_API; acquire: POINTER; release: POINTER) 
 		do
 			c_cairo_raster_source_pattern_get_acquire (pattern.item, acquire, release)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_set_snapshot (pattern: CAIRO_PATTERN_STRUCT_API; snapshot: POINTER)
+	cairo_raster_source_pattern_set_snapshot (pattern: CAIRO_PATTERN_STRUCT_API; snapshot: POINTER) 
 		do
 			c_cairo_raster_source_pattern_set_snapshot (pattern.item, snapshot)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_get_snapshot (pattern: CAIRO_PATTERN_STRUCT_API): POINTER
+	cairo_raster_source_pattern_get_snapshot (pattern: CAIRO_PATTERN_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_raster_source_pattern_get_snapshot (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_set_copy (pattern: CAIRO_PATTERN_STRUCT_API; a_copy: POINTER)
+	cairo_raster_source_pattern_set_copy (pattern: CAIRO_PATTERN_STRUCT_API; a_copy: POINTER) 
 		do
 			c_cairo_raster_source_pattern_set_copy (pattern.item, a_copy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_get_copy (pattern: CAIRO_PATTERN_STRUCT_API): POINTER
+	cairo_raster_source_pattern_get_copy (pattern: CAIRO_PATTERN_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_raster_source_pattern_get_copy (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_set_finish (pattern: CAIRO_PATTERN_STRUCT_API; finish: POINTER)
+	cairo_raster_source_pattern_set_finish (pattern: CAIRO_PATTERN_STRUCT_API; finish: POINTER) 
 		do
 			c_cairo_raster_source_pattern_set_finish (pattern.item, finish)
 		ensure
 			instance_free: class
 		end
 
-	cairo_raster_source_pattern_get_finish (pattern: CAIRO_PATTERN_STRUCT_API): POINTER
+	cairo_raster_source_pattern_get_finish (pattern: CAIRO_PATTERN_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_raster_source_pattern_get_finish (pattern.item)
 		ensure
@@ -1960,7 +1961,7 @@ feature -- Access
 
 	cairo_pattern_create_rgb (red: REAL_64; green: REAL_64; blue: REAL_64): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_rgb ((double)$red, (double)$green, (double)$blue);
@@ -1969,14 +1970,14 @@ feature -- Access
 
 	cairo_pattern_create_rgba (red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_rgba ((double)$red, (double)$green, (double)$blue, (double)$alpha);
 			]"
 		end
 
-	cairo_pattern_create_for_surface (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API
+	cairo_pattern_create_for_surface (surface: CAIRO_SURFACE_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_pattern_create_for_surface (surface.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -1988,7 +1989,7 @@ feature -- Access
 
 	cairo_pattern_create_linear (x0: REAL_64; y0: REAL_64; x1: REAL_64; y1: REAL_64): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_linear ((double)$x0, (double)$y0, (double)$x1, (double)$y1);
@@ -1997,14 +1998,14 @@ feature -- Access
 
 	cairo_pattern_create_radial (cx0: REAL_64; cy0: REAL_64; radius0: REAL_64; cx1: REAL_64; cy1: REAL_64; radius1: REAL_64): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_radial ((double)$cx0, (double)$cy0, (double)$radius0, (double)$cx1, (double)$cy1, (double)$radius1);
 			]"
 		end
 
-	cairo_pattern_create_mesh: detachable CAIRO_PATTERN_STRUCT_API
+	cairo_pattern_create_mesh: detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_pattern_create_mesh as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2014,7 +2015,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_pattern_reference (pattern: CAIRO_PATTERN_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API
+	cairo_pattern_reference (pattern: CAIRO_PATTERN_STRUCT_API): detachable CAIRO_PATTERN_STRUCT_API 
 		do
 			if attached c_cairo_pattern_reference (pattern.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2024,210 +2025,210 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_pattern_destroy (pattern: CAIRO_PATTERN_STRUCT_API)
+	cairo_pattern_destroy (pattern: CAIRO_PATTERN_STRUCT_API) 
 		do
 			c_cairo_pattern_destroy (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_reference_count (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER
+	cairo_pattern_get_reference_count (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_get_reference_count (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_status (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER
+	cairo_pattern_status (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_status (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_user_data (pattern: CAIRO_PATTERN_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER
+	cairo_pattern_get_user_data (pattern: CAIRO_PATTERN_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API): POINTER 
 		do
 			Result := c_cairo_pattern_get_user_data (pattern.item, key.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_set_user_data (pattern: CAIRO_PATTERN_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER
+	cairo_pattern_set_user_data (pattern: CAIRO_PATTERN_STRUCT_API; key: CAIRO_USER_DATA_KEY_STRUCT_API; user_data: POINTER; destroy: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_set_user_data (pattern.item, key.item, user_data, destroy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_type (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER
+	cairo_pattern_get_type (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_get_type (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_add_color_stop_rgb (pattern: CAIRO_PATTERN_STRUCT_API; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64)
+	cairo_pattern_add_color_stop_rgb (pattern: CAIRO_PATTERN_STRUCT_API; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64) 
 		do
 			c_cairo_pattern_add_color_stop_rgb (pattern.item, offset, red, green, blue)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_add_color_stop_rgba (pattern: CAIRO_PATTERN_STRUCT_API; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
+	cairo_pattern_add_color_stop_rgba (pattern: CAIRO_PATTERN_STRUCT_API; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64) 
 		do
 			c_cairo_pattern_add_color_stop_rgba (pattern.item, offset, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_begin_patch (pattern: CAIRO_PATTERN_STRUCT_API)
+	cairo_mesh_pattern_begin_patch (pattern: CAIRO_PATTERN_STRUCT_API) 
 		do
 			c_cairo_mesh_pattern_begin_patch (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_end_patch (pattern: CAIRO_PATTERN_STRUCT_API)
+	cairo_mesh_pattern_end_patch (pattern: CAIRO_PATTERN_STRUCT_API) 
 		do
 			c_cairo_mesh_pattern_end_patch (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_curve_to (pattern: CAIRO_PATTERN_STRUCT_API; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64)
+	cairo_mesh_pattern_curve_to (pattern: CAIRO_PATTERN_STRUCT_API; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64) 
 		do
 			c_cairo_mesh_pattern_curve_to (pattern.item, x1, y1, x2, y2, x3, y3)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_line_to (pattern: CAIRO_PATTERN_STRUCT_API; x: REAL_64; y: REAL_64)
+	cairo_mesh_pattern_line_to (pattern: CAIRO_PATTERN_STRUCT_API; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_mesh_pattern_line_to (pattern.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_move_to (pattern: CAIRO_PATTERN_STRUCT_API; x: REAL_64; y: REAL_64)
+	cairo_mesh_pattern_move_to (pattern: CAIRO_PATTERN_STRUCT_API; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_mesh_pattern_move_to (pattern.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_set_control_point (pattern: CAIRO_PATTERN_STRUCT_API; point_num: INTEGER; x: REAL_64; y: REAL_64)
+	cairo_mesh_pattern_set_control_point (pattern: CAIRO_PATTERN_STRUCT_API; point_num: INTEGER; x: REAL_64; y: REAL_64) 
 		do
 			c_cairo_mesh_pattern_set_control_point (pattern.item, point_num, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_set_corner_color_rgb (pattern: CAIRO_PATTERN_STRUCT_API; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64)
+	cairo_mesh_pattern_set_corner_color_rgb (pattern: CAIRO_PATTERN_STRUCT_API; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64) 
 		do
 			c_cairo_mesh_pattern_set_corner_color_rgb (pattern.item, corner_num, red, green, blue)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_set_corner_color_rgba (pattern: CAIRO_PATTERN_STRUCT_API; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
+	cairo_mesh_pattern_set_corner_color_rgba (pattern: CAIRO_PATTERN_STRUCT_API; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64) 
 		do
 			c_cairo_mesh_pattern_set_corner_color_rgba (pattern.item, corner_num, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_set_matrix (pattern: CAIRO_PATTERN_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_pattern_set_matrix (pattern: CAIRO_PATTERN_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_pattern_set_matrix (pattern.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_matrix (pattern: CAIRO_PATTERN_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_pattern_get_matrix (pattern: CAIRO_PATTERN_STRUCT_API; matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_pattern_get_matrix (pattern.item, matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_set_extend (pattern: CAIRO_PATTERN_STRUCT_API; extend: INTEGER)
+	cairo_pattern_set_extend (pattern: CAIRO_PATTERN_STRUCT_API; extend: INTEGER) 
 		do
 			c_cairo_pattern_set_extend (pattern.item, extend)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_extend (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER
+	cairo_pattern_get_extend (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_get_extend (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_set_filter (pattern: CAIRO_PATTERN_STRUCT_API; filter: INTEGER)
+	cairo_pattern_set_filter (pattern: CAIRO_PATTERN_STRUCT_API; filter: INTEGER) 
 		do
 			c_cairo_pattern_set_filter (pattern.item, filter)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_filter (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER
+	cairo_pattern_get_filter (pattern: CAIRO_PATTERN_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_get_filter (pattern.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_rgba (pattern: CAIRO_PATTERN_STRUCT_API; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
+	cairo_pattern_get_rgba (pattern: CAIRO_PATTERN_STRUCT_API; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_get_rgba (pattern.item, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_surface (pattern: CAIRO_PATTERN_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API): INTEGER
+	cairo_pattern_get_surface (pattern: CAIRO_PATTERN_STRUCT_API; surface: CAIRO_SURFACE_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_pattern_get_surface (pattern.item, surface.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_color_stop_rgba (pattern: CAIRO_PATTERN_STRUCT_API; index: INTEGER; offset: POINTER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
+	cairo_pattern_get_color_stop_rgba (pattern: CAIRO_PATTERN_STRUCT_API; index: INTEGER; offset: POINTER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_get_color_stop_rgba (pattern.item, index, offset, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_color_stop_count (pattern: CAIRO_PATTERN_STRUCT_API; count: POINTER): INTEGER
+	cairo_pattern_get_color_stop_count (pattern: CAIRO_PATTERN_STRUCT_API; count: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_get_color_stop_count (pattern.item, count)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_linear_points (pattern: CAIRO_PATTERN_STRUCT_API; x0: POINTER; y0: POINTER; x1: POINTER; y1: POINTER): INTEGER
+	cairo_pattern_get_linear_points (pattern: CAIRO_PATTERN_STRUCT_API; x0: POINTER; y0: POINTER; x1: POINTER; y1: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_get_linear_points (pattern.item, x0, y0, x1, y1)
 		ensure
 			instance_free: class
 		end
 
-	cairo_pattern_get_radial_circles (pattern: CAIRO_PATTERN_STRUCT_API; x0: POINTER; y0: POINTER; r0: POINTER; x1: POINTER; y1: POINTER; r1: POINTER): INTEGER
+	cairo_pattern_get_radial_circles (pattern: CAIRO_PATTERN_STRUCT_API; x0: POINTER; y0: POINTER; r0: POINTER; x1: POINTER; y1: POINTER; r1: POINTER): INTEGER 
 		do
 			Result := c_cairo_pattern_get_radial_circles (pattern.item, x0, y0, r0, x1, y1, r1)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_get_patch_count (pattern: CAIRO_PATTERN_STRUCT_API; count: POINTER): INTEGER
+	cairo_mesh_pattern_get_patch_count (pattern: CAIRO_PATTERN_STRUCT_API; count: POINTER): INTEGER 
 		do
 			Result := c_cairo_mesh_pattern_get_patch_count (pattern.item, count)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_get_path (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER): detachable CAIRO_PATH_STRUCT_API
+	cairo_mesh_pattern_get_path (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER): detachable CAIRO_PATH_STRUCT_API 
 		do
 			if attached c_cairo_mesh_pattern_get_path (pattern.item, patch_num) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2237,105 +2238,105 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_get_corner_color_rgba (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER; corner_num: INTEGER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
+	cairo_mesh_pattern_get_corner_color_rgba (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER; corner_num: INTEGER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER 
 		do
 			Result := c_cairo_mesh_pattern_get_corner_color_rgba (pattern.item, patch_num, corner_num, red, green, blue, alpha)
 		ensure
 			instance_free: class
 		end
 
-	cairo_mesh_pattern_get_control_point (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER; point_num: INTEGER; x: POINTER; y: POINTER): INTEGER
+	cairo_mesh_pattern_get_control_point (pattern: CAIRO_PATTERN_STRUCT_API; patch_num: INTEGER; point_num: INTEGER; x: POINTER; y: POINTER): INTEGER 
 		do
 			Result := c_cairo_mesh_pattern_get_control_point (pattern.item, patch_num, point_num, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_init (matrix: CAIRO_MATRIX_STRUCT_API; xx: REAL_64; yx: REAL_64; xy: REAL_64; yy: REAL_64; x0: REAL_64; y0: REAL_64)
+	cairo_matrix_init (matrix: CAIRO_MATRIX_STRUCT_API; xx: REAL_64; yx: REAL_64; xy: REAL_64; yy: REAL_64; x0: REAL_64; y0: REAL_64) 
 		do
 			c_cairo_matrix_init (matrix.item, xx, yx, xy, yy, x0, y0)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_init_identity (matrix: CAIRO_MATRIX_STRUCT_API)
+	cairo_matrix_init_identity (matrix: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_matrix_init_identity (matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_init_translate (matrix: CAIRO_MATRIX_STRUCT_API; tx: REAL_64; ty: REAL_64)
+	cairo_matrix_init_translate (matrix: CAIRO_MATRIX_STRUCT_API; tx: REAL_64; ty: REAL_64) 
 		do
 			c_cairo_matrix_init_translate (matrix.item, tx, ty)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_init_scale (matrix: CAIRO_MATRIX_STRUCT_API; sx: REAL_64; sy: REAL_64)
+	cairo_matrix_init_scale (matrix: CAIRO_MATRIX_STRUCT_API; sx: REAL_64; sy: REAL_64) 
 		do
 			c_cairo_matrix_init_scale (matrix.item, sx, sy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_init_rotate (matrix: CAIRO_MATRIX_STRUCT_API; radians: REAL_64)
+	cairo_matrix_init_rotate (matrix: CAIRO_MATRIX_STRUCT_API; radians: REAL_64) 
 		do
 			c_cairo_matrix_init_rotate (matrix.item, radians)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_translate (matrix: CAIRO_MATRIX_STRUCT_API; tx: REAL_64; ty: REAL_64)
+	cairo_matrix_translate (matrix: CAIRO_MATRIX_STRUCT_API; tx: REAL_64; ty: REAL_64) 
 		do
 			c_cairo_matrix_translate (matrix.item, tx, ty)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_scale (matrix: CAIRO_MATRIX_STRUCT_API; sx: REAL_64; sy: REAL_64)
+	cairo_matrix_scale (matrix: CAIRO_MATRIX_STRUCT_API; sx: REAL_64; sy: REAL_64) 
 		do
 			c_cairo_matrix_scale (matrix.item, sx, sy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_rotate (matrix: CAIRO_MATRIX_STRUCT_API; radians: REAL_64)
+	cairo_matrix_rotate (matrix: CAIRO_MATRIX_STRUCT_API; radians: REAL_64) 
 		do
 			c_cairo_matrix_rotate (matrix.item, radians)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_invert (matrix: CAIRO_MATRIX_STRUCT_API): INTEGER
+	cairo_matrix_invert (matrix: CAIRO_MATRIX_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_matrix_invert (matrix.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_multiply (a_result: CAIRO_MATRIX_STRUCT_API; a: CAIRO_MATRIX_STRUCT_API; b: CAIRO_MATRIX_STRUCT_API)
+	cairo_matrix_multiply (a_result: CAIRO_MATRIX_STRUCT_API; a: CAIRO_MATRIX_STRUCT_API; b: CAIRO_MATRIX_STRUCT_API) 
 		do
 			c_cairo_matrix_multiply (a_result.item, a.item, b.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_transform_distance (matrix: CAIRO_MATRIX_STRUCT_API; dx: POINTER; dy: POINTER)
+	cairo_matrix_transform_distance (matrix: CAIRO_MATRIX_STRUCT_API; dx: POINTER; dy: POINTER) 
 		do
 			c_cairo_matrix_transform_distance (matrix.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_matrix_transform_point (matrix: CAIRO_MATRIX_STRUCT_API; x: POINTER; y: POINTER)
+	cairo_matrix_transform_point (matrix: CAIRO_MATRIX_STRUCT_API; x: POINTER; y: POINTER) 
 		do
 			c_cairo_matrix_transform_point (matrix.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_create: detachable CAIRO_REGION_STRUCT_API
+	cairo_region_create: detachable CAIRO_REGION_STRUCT_API 
 		do
 			if attached c_cairo_region_create as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2345,7 +2346,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_region_create_rectangle (rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): detachable CAIRO_REGION_STRUCT_API
+	cairo_region_create_rectangle (rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): detachable CAIRO_REGION_STRUCT_API 
 		do
 			if attached c_cairo_region_create_rectangle (rectangle.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2355,7 +2356,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_region_create_rectangles (rects: CAIRO_RECTANGLE_INT_STRUCT_API; count: INTEGER): detachable CAIRO_REGION_STRUCT_API
+	cairo_region_create_rectangles (rects: CAIRO_RECTANGLE_INT_STRUCT_API; count: INTEGER): detachable CAIRO_REGION_STRUCT_API 
 		do
 			if attached c_cairo_region_create_rectangles (rects.item, count) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2365,7 +2366,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_region_copy (original: CAIRO_REGION_STRUCT_API): detachable CAIRO_REGION_STRUCT_API
+	cairo_region_copy (original: CAIRO_REGION_STRUCT_API): detachable CAIRO_REGION_STRUCT_API 
 		do
 			if attached c_cairo_region_copy (original.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2375,7 +2376,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_region_reference (region: CAIRO_REGION_STRUCT_API): detachable CAIRO_REGION_STRUCT_API
+	cairo_region_reference (region: CAIRO_REGION_STRUCT_API): detachable CAIRO_REGION_STRUCT_API 
 		do
 			if attached c_cairo_region_reference (region.item) as l_ptr and then not l_ptr.is_default_pointer then
 				create Result.make_by_pointer ( l_ptr )
@@ -2385,126 +2386,126 @@ feature -- Access
 			instance_free: class
 		end
 
-	cairo_region_destroy (region: CAIRO_REGION_STRUCT_API)
+	cairo_region_destroy (region: CAIRO_REGION_STRUCT_API) 
 		do
 			c_cairo_region_destroy (region.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_equal (a: CAIRO_REGION_STRUCT_API; b: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_equal (a: CAIRO_REGION_STRUCT_API; b: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_equal (a.item, b.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_status (region: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_status (region: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_status (region.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_get_extents (region: CAIRO_REGION_STRUCT_API; extents: CAIRO_RECTANGLE_INT_STRUCT_API)
+	cairo_region_get_extents (region: CAIRO_REGION_STRUCT_API; extents: CAIRO_RECTANGLE_INT_STRUCT_API) 
 		do
 			c_cairo_region_get_extents (region.item, extents.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_num_rectangles (region: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_num_rectangles (region: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_num_rectangles (region.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_get_rectangle (region: CAIRO_REGION_STRUCT_API; nth: INTEGER; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API)
+	cairo_region_get_rectangle (region: CAIRO_REGION_STRUCT_API; nth: INTEGER; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API) 
 		do
 			c_cairo_region_get_rectangle (region.item, nth, rectangle.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_is_empty (region: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_is_empty (region: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_is_empty (region.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_contains_rectangle (region: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER
+	cairo_region_contains_rectangle (region: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_contains_rectangle (region.item, rectangle.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_contains_point (region: CAIRO_REGION_STRUCT_API; x: INTEGER; y: INTEGER): INTEGER
+	cairo_region_contains_point (region: CAIRO_REGION_STRUCT_API; x: INTEGER; y: INTEGER): INTEGER 
 		do
 			Result := c_cairo_region_contains_point (region.item, x, y)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_translate (region: CAIRO_REGION_STRUCT_API; dx: INTEGER; dy: INTEGER)
+	cairo_region_translate (region: CAIRO_REGION_STRUCT_API; dx: INTEGER; dy: INTEGER) 
 		do
 			c_cairo_region_translate (region.item, dx, dy)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_subtract (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_subtract (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_subtract (dst.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_subtract_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER
+	cairo_region_subtract_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_subtract_rectangle (dst.item, rectangle.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_intersect (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_intersect (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_intersect (dst.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_intersect_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER
+	cairo_region_intersect_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_intersect_rectangle (dst.item, rectangle.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_union (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_union (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_union (dst.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_union_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER
+	cairo_region_union_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_union_rectangle (dst.item, rectangle.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_xor (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER
+	cairo_region_xor (dst: CAIRO_REGION_STRUCT_API; other: CAIRO_REGION_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_xor (dst.item, other.item)
 		ensure
 			instance_free: class
 		end
 
-	cairo_region_xor_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER
+	cairo_region_xor_rectangle (dst: CAIRO_REGION_STRUCT_API; rectangle: CAIRO_RECTANGLE_INT_STRUCT_API): INTEGER 
 		do
 			Result := c_cairo_region_xor_rectangle (dst.item, rectangle.item)
 		ensure
@@ -2513,7 +2514,7 @@ feature -- Access
 
 	cairo_debug_reset_static_data
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_debug_reset_static_data ();
@@ -2524,7 +2525,7 @@ feature -- Externals
 
 	c_cairo_create (target: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_create ((cairo_surface_t*)$target);
@@ -2533,7 +2534,7 @@ feature -- Externals
 
 	c_cairo_reference (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_reference ((cairo_t*)$cr);
@@ -2542,7 +2543,7 @@ feature -- Externals
 
 	c_cairo_destroy (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_destroy ((cairo_t*)$cr);
@@ -2551,7 +2552,7 @@ feature -- Externals
 
 	c_cairo_get_reference_count (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_reference_count ((cairo_t*)$cr);
@@ -2560,7 +2561,7 @@ feature -- Externals
 
 	c_cairo_get_user_data (cr: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_user_data ((cairo_t*)$cr, (cairo_user_data_key_t const*)$key);
@@ -2569,7 +2570,7 @@ feature -- Externals
 
 	c_cairo_set_user_data (cr: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_set_user_data ((cairo_t*)$cr, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -2578,7 +2579,7 @@ feature -- Externals
 
 	c_cairo_save (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_save ((cairo_t*)$cr);
@@ -2587,7 +2588,7 @@ feature -- Externals
 
 	c_cairo_restore (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_restore ((cairo_t*)$cr);
@@ -2596,7 +2597,7 @@ feature -- Externals
 
 	c_cairo_push_group (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_push_group ((cairo_t*)$cr);
@@ -2605,7 +2606,7 @@ feature -- Externals
 
 	c_cairo_push_group_with_content (cr: POINTER; content: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_push_group_with_content ((cairo_t*)$cr, (cairo_content_t)$content);
@@ -2614,7 +2615,7 @@ feature -- Externals
 
 	c_cairo_pop_group (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pop_group ((cairo_t*)$cr);
@@ -2623,7 +2624,7 @@ feature -- Externals
 
 	c_cairo_pop_group_to_source (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pop_group_to_source ((cairo_t*)$cr);
@@ -2632,7 +2633,7 @@ feature -- Externals
 
 	c_cairo_set_operator (cr: POINTER; op: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_operator ((cairo_t*)$cr, (cairo_operator_t)$op);
@@ -2641,7 +2642,7 @@ feature -- Externals
 
 	c_cairo_set_source (cr: POINTER; source: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_source ((cairo_t*)$cr, (cairo_pattern_t*)$source);
@@ -2650,7 +2651,7 @@ feature -- Externals
 
 	c_cairo_set_source_rgb (cr: POINTER; red: REAL_64; green: REAL_64; blue: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_source_rgb ((cairo_t*)$cr, (double)$red, (double)$green, (double)$blue);
@@ -2659,7 +2660,7 @@ feature -- Externals
 
 	c_cairo_set_source_rgba (cr: POINTER; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_source_rgba ((cairo_t*)$cr, (double)$red, (double)$green, (double)$blue, (double)$alpha);
@@ -2668,7 +2669,7 @@ feature -- Externals
 
 	c_cairo_set_source_surface (cr: POINTER; surface: POINTER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_source_surface ((cairo_t*)$cr, (cairo_surface_t*)$surface, (double)$x, (double)$y);
@@ -2677,7 +2678,7 @@ feature -- Externals
 
 	c_cairo_set_tolerance (cr: POINTER; tolerance: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_tolerance ((cairo_t*)$cr, (double)$tolerance);
@@ -2686,7 +2687,7 @@ feature -- Externals
 
 	c_cairo_set_antialias (cr: POINTER; antialias: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_antialias ((cairo_t*)$cr, (cairo_antialias_t)$antialias);
@@ -2695,7 +2696,7 @@ feature -- Externals
 
 	c_cairo_set_fill_rule (cr: POINTER; fill_rule: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_fill_rule ((cairo_t*)$cr, (cairo_fill_rule_t)$fill_rule);
@@ -2704,7 +2705,7 @@ feature -- Externals
 
 	c_cairo_set_line_width (cr: POINTER; width: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_line_width ((cairo_t*)$cr, (double)$width);
@@ -2713,7 +2714,7 @@ feature -- Externals
 
 	c_cairo_set_line_cap (cr: POINTER; line_cap: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_line_cap ((cairo_t*)$cr, (cairo_line_cap_t)$line_cap);
@@ -2722,7 +2723,7 @@ feature -- Externals
 
 	c_cairo_set_line_join (cr: POINTER; line_join: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_line_join ((cairo_t*)$cr, (cairo_line_join_t)$line_join);
@@ -2731,7 +2732,7 @@ feature -- Externals
 
 	c_cairo_set_dash (cr: POINTER; dashes: POINTER; num_dashes: INTEGER; offset: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_dash ((cairo_t*)$cr, (double const*)$dashes, (int)$num_dashes, (double)$offset);
@@ -2740,7 +2741,7 @@ feature -- Externals
 
 	c_cairo_set_miter_limit (cr: POINTER; limit: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_miter_limit ((cairo_t*)$cr, (double)$limit);
@@ -2749,7 +2750,7 @@ feature -- Externals
 
 	c_cairo_translate (cr: POINTER; tx: REAL_64; ty: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_translate ((cairo_t*)$cr, (double)$tx, (double)$ty);
@@ -2758,7 +2759,7 @@ feature -- Externals
 
 	c_cairo_scale (cr: POINTER; sx: REAL_64; sy: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scale ((cairo_t*)$cr, (double)$sx, (double)$sy);
@@ -2767,7 +2768,7 @@ feature -- Externals
 
 	c_cairo_rotate (cr: POINTER; angle: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rotate ((cairo_t*)$cr, (double)$angle);
@@ -2776,7 +2777,7 @@ feature -- Externals
 
 	c_cairo_transform (cr: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_transform ((cairo_t*)$cr, (cairo_matrix_t const*)$matrix);
@@ -2785,7 +2786,7 @@ feature -- Externals
 
 	c_cairo_set_matrix (cr: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_matrix ((cairo_t*)$cr, (cairo_matrix_t const*)$matrix);
@@ -2794,7 +2795,7 @@ feature -- Externals
 
 	c_cairo_identity_matrix (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_identity_matrix ((cairo_t*)$cr);
@@ -2803,7 +2804,7 @@ feature -- Externals
 
 	c_cairo_user_to_device (cr: POINTER; x: POINTER; y: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_to_device ((cairo_t*)$cr, (double*)$x, (double*)$y);
@@ -2812,7 +2813,7 @@ feature -- Externals
 
 	c_cairo_user_to_device_distance (cr: POINTER; dx: POINTER; dy: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_to_device_distance ((cairo_t*)$cr, (double*)$dx, (double*)$dy);
@@ -2821,7 +2822,7 @@ feature -- Externals
 
 	c_cairo_device_to_user (cr: POINTER; x: POINTER; y: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_to_user ((cairo_t*)$cr, (double*)$x, (double*)$y);
@@ -2830,7 +2831,7 @@ feature -- Externals
 
 	c_cairo_device_to_user_distance (cr: POINTER; dx: POINTER; dy: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_to_user_distance ((cairo_t*)$cr, (double*)$dx, (double*)$dy);
@@ -2839,7 +2840,7 @@ feature -- Externals
 
 	c_cairo_new_path (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_new_path ((cairo_t*)$cr);
@@ -2848,7 +2849,7 @@ feature -- Externals
 
 	c_cairo_move_to (cr: POINTER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_move_to ((cairo_t*)$cr, (double)$x, (double)$y);
@@ -2857,7 +2858,7 @@ feature -- Externals
 
 	c_cairo_new_sub_path (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_new_sub_path ((cairo_t*)$cr);
@@ -2866,7 +2867,7 @@ feature -- Externals
 
 	c_cairo_line_to (cr: POINTER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_line_to ((cairo_t*)$cr, (double)$x, (double)$y);
@@ -2875,7 +2876,7 @@ feature -- Externals
 
 	c_cairo_curve_to (cr: POINTER; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_curve_to ((cairo_t*)$cr, (double)$x1, (double)$y1, (double)$x2, (double)$y2, (double)$x3, (double)$y3);
@@ -2884,7 +2885,7 @@ feature -- Externals
 
 	c_cairo_arc (cr: POINTER; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_arc ((cairo_t*)$cr, (double)$xc, (double)$yc, (double)$radius, (double)$angle1, (double)$angle2);
@@ -2893,7 +2894,7 @@ feature -- Externals
 
 	c_cairo_arc_negative (cr: POINTER; xc: REAL_64; yc: REAL_64; radius: REAL_64; angle1: REAL_64; angle2: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_arc_negative ((cairo_t*)$cr, (double)$xc, (double)$yc, (double)$radius, (double)$angle1, (double)$angle2);
@@ -2902,7 +2903,7 @@ feature -- Externals
 
 	c_cairo_rel_move_to (cr: POINTER; dx: REAL_64; dy: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rel_move_to ((cairo_t*)$cr, (double)$dx, (double)$dy);
@@ -2911,7 +2912,7 @@ feature -- Externals
 
 	c_cairo_rel_line_to (cr: POINTER; dx: REAL_64; dy: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rel_line_to ((cairo_t*)$cr, (double)$dx, (double)$dy);
@@ -2920,7 +2921,7 @@ feature -- Externals
 
 	c_cairo_rel_curve_to (cr: POINTER; dx1: REAL_64; dy1: REAL_64; dx2: REAL_64; dy2: REAL_64; dx3: REAL_64; dy3: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rel_curve_to ((cairo_t*)$cr, (double)$dx1, (double)$dy1, (double)$dx2, (double)$dy2, (double)$dx3, (double)$dy3);
@@ -2929,7 +2930,7 @@ feature -- Externals
 
 	c_cairo_rectangle (cr: POINTER; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rectangle ((cairo_t*)$cr, (double)$x, (double)$y, (double)$width, (double)$height);
@@ -2938,7 +2939,7 @@ feature -- Externals
 
 	c_cairo_close_path (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_close_path ((cairo_t*)$cr);
@@ -2947,7 +2948,7 @@ feature -- Externals
 
 	c_cairo_path_extents (cr: POINTER; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_path_extents ((cairo_t*)$cr, (double*)$x1, (double*)$y1, (double*)$x2, (double*)$y2);
@@ -2956,7 +2957,7 @@ feature -- Externals
 
 	c_cairo_paint (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_paint ((cairo_t*)$cr);
@@ -2965,7 +2966,7 @@ feature -- Externals
 
 	c_cairo_paint_with_alpha (cr: POINTER; alpha: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_paint_with_alpha ((cairo_t*)$cr, (double)$alpha);
@@ -2974,7 +2975,7 @@ feature -- Externals
 
 	c_cairo_mask (cr: POINTER; pattern: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mask ((cairo_t*)$cr, (cairo_pattern_t*)$pattern);
@@ -2983,7 +2984,7 @@ feature -- Externals
 
 	c_cairo_mask_surface (cr: POINTER; surface: POINTER; surface_x: REAL_64; surface_y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mask_surface ((cairo_t*)$cr, (cairo_surface_t*)$surface, (double)$surface_x, (double)$surface_y);
@@ -2992,7 +2993,7 @@ feature -- Externals
 
 	c_cairo_stroke (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_stroke ((cairo_t*)$cr);
@@ -3001,7 +3002,7 @@ feature -- Externals
 
 	c_cairo_stroke_preserve (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_stroke_preserve ((cairo_t*)$cr);
@@ -3010,7 +3011,7 @@ feature -- Externals
 
 	c_cairo_fill (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_fill ((cairo_t*)$cr);
@@ -3019,7 +3020,7 @@ feature -- Externals
 
 	c_cairo_fill_preserve (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_fill_preserve ((cairo_t*)$cr);
@@ -3028,7 +3029,7 @@ feature -- Externals
 
 	c_cairo_copy_page (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_copy_page ((cairo_t*)$cr);
@@ -3037,7 +3038,7 @@ feature -- Externals
 
 	c_cairo_show_page (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_show_page ((cairo_t*)$cr);
@@ -3046,7 +3047,7 @@ feature -- Externals
 
 	c_cairo_in_stroke (cr: POINTER; x: REAL_64; y: REAL_64): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_in_stroke ((cairo_t*)$cr, (double)$x, (double)$y);
@@ -3055,7 +3056,7 @@ feature -- Externals
 
 	c_cairo_in_fill (cr: POINTER; x: REAL_64; y: REAL_64): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_in_fill ((cairo_t*)$cr, (double)$x, (double)$y);
@@ -3064,7 +3065,7 @@ feature -- Externals
 
 	c_cairo_in_clip (cr: POINTER; x: REAL_64; y: REAL_64): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_in_clip ((cairo_t*)$cr, (double)$x, (double)$y);
@@ -3073,7 +3074,7 @@ feature -- Externals
 
 	c_cairo_stroke_extents (cr: POINTER; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_stroke_extents ((cairo_t*)$cr, (double*)$x1, (double*)$y1, (double*)$x2, (double*)$y2);
@@ -3082,7 +3083,7 @@ feature -- Externals
 
 	c_cairo_fill_extents (cr: POINTER; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_fill_extents ((cairo_t*)$cr, (double*)$x1, (double*)$y1, (double*)$x2, (double*)$y2);
@@ -3091,7 +3092,7 @@ feature -- Externals
 
 	c_cairo_reset_clip (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_reset_clip ((cairo_t*)$cr);
@@ -3100,7 +3101,7 @@ feature -- Externals
 
 	c_cairo_clip (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_clip ((cairo_t*)$cr);
@@ -3109,7 +3110,7 @@ feature -- Externals
 
 	c_cairo_clip_preserve (cr: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_clip_preserve ((cairo_t*)$cr);
@@ -3118,7 +3119,7 @@ feature -- Externals
 
 	c_cairo_clip_extents (cr: POINTER; x1: POINTER; y1: POINTER; x2: POINTER; y2: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_clip_extents ((cairo_t*)$cr, (double*)$x1, (double*)$y1, (double*)$x2, (double*)$y2);
@@ -3127,7 +3128,7 @@ feature -- Externals
 
 	c_cairo_copy_clip_rectangle_list (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_copy_clip_rectangle_list ((cairo_t*)$cr);
@@ -3136,7 +3137,7 @@ feature -- Externals
 
 	c_cairo_rectangle_list_destroy (rectangle_list: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_rectangle_list_destroy ((cairo_rectangle_list_t*)$rectangle_list);
@@ -3145,7 +3146,7 @@ feature -- Externals
 
 	c_cairo_tag_begin (cr: POINTER; tag_name: POINTER; attributes: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_tag_begin ((cairo_t*)$cr, (char const*)$tag_name, (char const*)$attributes);
@@ -3154,7 +3155,7 @@ feature -- Externals
 
 	c_cairo_tag_end (cr: POINTER; tag_name: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_tag_end ((cairo_t*)$cr, (char const*)$tag_name);
@@ -3163,7 +3164,7 @@ feature -- Externals
 
 	c_cairo_glyph_free (glyphs: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_glyph_free ((cairo_glyph_t*)$glyphs);
@@ -3172,7 +3173,7 @@ feature -- Externals
 
 	c_cairo_text_cluster_free (clusters: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_text_cluster_free ((cairo_text_cluster_t*)$clusters);
@@ -3181,7 +3182,7 @@ feature -- Externals
 
 	c_cairo_font_options_create: POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_create ();
@@ -3190,7 +3191,7 @@ feature -- Externals
 
 	c_cairo_font_options_copy (original: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_copy ((cairo_font_options_t const*)$original);
@@ -3199,7 +3200,7 @@ feature -- Externals
 
 	c_cairo_font_options_destroy (options: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_destroy ((cairo_font_options_t*)$options);
@@ -3208,7 +3209,7 @@ feature -- Externals
 
 	c_cairo_font_options_status (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_status ((cairo_font_options_t*)$options);
@@ -3217,7 +3218,7 @@ feature -- Externals
 
 	c_cairo_font_options_merge (options: POINTER; other: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_merge ((cairo_font_options_t*)$options, (cairo_font_options_t const*)$other);
@@ -3226,7 +3227,7 @@ feature -- Externals
 
 	c_cairo_font_options_equal (options: POINTER; other: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_equal ((cairo_font_options_t const*)$options, (cairo_font_options_t const*)$other);
@@ -3235,7 +3236,7 @@ feature -- Externals
 
 	c_cairo_font_options_hash (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_hash ((cairo_font_options_t const*)$options);
@@ -3244,7 +3245,7 @@ feature -- Externals
 
 	c_cairo_font_options_set_antialias (options: POINTER; antialias: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_set_antialias ((cairo_font_options_t*)$options, (cairo_antialias_t)$antialias);
@@ -3253,7 +3254,7 @@ feature -- Externals
 
 	c_cairo_font_options_get_antialias (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_get_antialias ((cairo_font_options_t const*)$options);
@@ -3262,7 +3263,7 @@ feature -- Externals
 
 	c_cairo_font_options_set_subpixel_order (options: POINTER; subpixel_order: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_set_subpixel_order ((cairo_font_options_t*)$options, (cairo_subpixel_order_t)$subpixel_order);
@@ -3271,7 +3272,7 @@ feature -- Externals
 
 	c_cairo_font_options_get_subpixel_order (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_get_subpixel_order ((cairo_font_options_t const*)$options);
@@ -3280,7 +3281,7 @@ feature -- Externals
 
 	c_cairo_font_options_set_hint_style (options: POINTER; hint_style: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_set_hint_style ((cairo_font_options_t*)$options, (cairo_hint_style_t)$hint_style);
@@ -3289,7 +3290,7 @@ feature -- Externals
 
 	c_cairo_font_options_get_hint_style (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_get_hint_style ((cairo_font_options_t const*)$options);
@@ -3298,7 +3299,7 @@ feature -- Externals
 
 	c_cairo_font_options_set_hint_metrics (options: POINTER; hint_metrics: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_set_hint_metrics ((cairo_font_options_t*)$options, (cairo_hint_metrics_t)$hint_metrics);
@@ -3307,7 +3308,7 @@ feature -- Externals
 
 	c_cairo_font_options_get_hint_metrics (options: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_get_hint_metrics ((cairo_font_options_t const*)$options);
@@ -3316,7 +3317,7 @@ feature -- Externals
 
 	c_cairo_font_options_get_variations (options: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_options_get_variations ((cairo_font_options_t*)$options);
@@ -3325,7 +3326,7 @@ feature -- Externals
 
 	c_cairo_font_options_set_variations (options: POINTER; variations: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_options_set_variations ((cairo_font_options_t*)$options, (char const*)$variations);
@@ -3334,7 +3335,7 @@ feature -- Externals
 
 	c_cairo_select_font_face (cr: POINTER; family: POINTER; slant: INTEGER; weight: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_select_font_face ((cairo_t*)$cr, (char const*)$family, (cairo_font_slant_t)$slant, (cairo_font_weight_t)$weight);
@@ -3343,7 +3344,7 @@ feature -- Externals
 
 	c_cairo_set_font_size (cr: POINTER; size: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_font_size ((cairo_t*)$cr, (double)$size);
@@ -3352,7 +3353,7 @@ feature -- Externals
 
 	c_cairo_set_font_matrix (cr: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_font_matrix ((cairo_t*)$cr, (cairo_matrix_t const*)$matrix);
@@ -3361,7 +3362,7 @@ feature -- Externals
 
 	c_cairo_get_font_matrix (cr: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_get_font_matrix ((cairo_t*)$cr, (cairo_matrix_t*)$matrix);
@@ -3370,7 +3371,7 @@ feature -- Externals
 
 	c_cairo_set_font_options (cr: POINTER; options: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_font_options ((cairo_t*)$cr, (cairo_font_options_t const*)$options);
@@ -3379,7 +3380,7 @@ feature -- Externals
 
 	c_cairo_get_font_options (cr: POINTER; options: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_get_font_options ((cairo_t*)$cr, (cairo_font_options_t*)$options);
@@ -3388,7 +3389,7 @@ feature -- Externals
 
 	c_cairo_set_font_face (cr: POINTER; font_face: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_font_face ((cairo_t*)$cr, (cairo_font_face_t*)$font_face);
@@ -3397,7 +3398,7 @@ feature -- Externals
 
 	c_cairo_get_font_face (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_font_face ((cairo_t*)$cr);
@@ -3406,7 +3407,7 @@ feature -- Externals
 
 	c_cairo_set_scaled_font (cr: POINTER; scaled_font: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_set_scaled_font ((cairo_t*)$cr, (cairo_scaled_font_t const*)$scaled_font);
@@ -3415,7 +3416,7 @@ feature -- Externals
 
 	c_cairo_get_scaled_font (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_scaled_font ((cairo_t*)$cr);
@@ -3424,7 +3425,7 @@ feature -- Externals
 
 	c_cairo_show_text (cr: POINTER; utf8: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_show_text ((cairo_t*)$cr, (char const*)$utf8);
@@ -3433,7 +3434,7 @@ feature -- Externals
 
 	c_cairo_show_glyphs (cr: POINTER; glyphs: POINTER; num_glyphs: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_show_glyphs ((cairo_t*)$cr, (cairo_glyph_t const*)$glyphs, (int)$num_glyphs);
@@ -3442,7 +3443,7 @@ feature -- Externals
 
 	c_cairo_show_text_glyphs (cr: POINTER; utf8: POINTER; utf8_len: INTEGER; glyphs: POINTER; num_glyphs: INTEGER; clusters: POINTER; num_clusters: INTEGER; cluster_flags: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_show_text_glyphs ((cairo_t*)$cr, (char const*)$utf8, (int)$utf8_len, (cairo_glyph_t const*)$glyphs, (int)$num_glyphs, (cairo_text_cluster_t const*)$clusters, (int)$num_clusters, (cairo_text_cluster_flags_t)$cluster_flags);
@@ -3451,7 +3452,7 @@ feature -- Externals
 
 	c_cairo_text_path (cr: POINTER; utf8: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_text_path ((cairo_t*)$cr, (char const*)$utf8);
@@ -3460,7 +3461,7 @@ feature -- Externals
 
 	c_cairo_glyph_path (cr: POINTER; glyphs: POINTER; num_glyphs: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_glyph_path ((cairo_t*)$cr, (cairo_glyph_t const*)$glyphs, (int)$num_glyphs);
@@ -3469,7 +3470,7 @@ feature -- Externals
 
 	c_cairo_text_extents (cr: POINTER; utf8: POINTER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_text_extents ((cairo_t*)$cr, (char const*)$utf8, (cairo_text_extents_t*)$extents);
@@ -3478,7 +3479,7 @@ feature -- Externals
 
 	c_cairo_glyph_extents (cr: POINTER; glyphs: POINTER; num_glyphs: INTEGER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_glyph_extents ((cairo_t*)$cr, (cairo_glyph_t const*)$glyphs, (int)$num_glyphs, (cairo_text_extents_t*)$extents);
@@ -3487,7 +3488,7 @@ feature -- Externals
 
 	c_cairo_font_extents (cr: POINTER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_extents ((cairo_t*)$cr, (cairo_font_extents_t*)$extents);
@@ -3496,7 +3497,7 @@ feature -- Externals
 
 	c_cairo_font_face_reference (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_reference ((cairo_font_face_t*)$font_face);
@@ -3505,7 +3506,7 @@ feature -- Externals
 
 	c_cairo_font_face_destroy (font_face: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_font_face_destroy ((cairo_font_face_t*)$font_face);
@@ -3514,7 +3515,7 @@ feature -- Externals
 
 	c_cairo_font_face_get_reference_count (font_face: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_get_reference_count ((cairo_font_face_t*)$font_face);
@@ -3523,7 +3524,7 @@ feature -- Externals
 
 	c_cairo_font_face_status (font_face: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_status ((cairo_font_face_t*)$font_face);
@@ -3532,7 +3533,7 @@ feature -- Externals
 
 	c_cairo_font_face_get_type (font_face: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_get_type ((cairo_font_face_t*)$font_face);
@@ -3541,7 +3542,7 @@ feature -- Externals
 
 	c_cairo_font_face_get_user_data (font_face: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_get_user_data ((cairo_font_face_t*)$font_face, (cairo_user_data_key_t const*)$key);
@@ -3550,7 +3551,7 @@ feature -- Externals
 
 	c_cairo_font_face_set_user_data (font_face: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_font_face_set_user_data ((cairo_font_face_t*)$font_face, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -3559,7 +3560,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_create (font_face: POINTER; font_matrix: POINTER; ctm: POINTER; options: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_create ((cairo_font_face_t*)$font_face, (cairo_matrix_t const*)$font_matrix, (cairo_matrix_t const*)$ctm, (cairo_font_options_t const*)$options);
@@ -3568,7 +3569,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_reference (scaled_font: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_reference ((cairo_scaled_font_t*)$scaled_font);
@@ -3577,7 +3578,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_destroy (scaled_font: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_destroy ((cairo_scaled_font_t*)$scaled_font);
@@ -3586,7 +3587,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_reference_count (scaled_font: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_get_reference_count ((cairo_scaled_font_t*)$scaled_font);
@@ -3595,7 +3596,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_status (scaled_font: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_status ((cairo_scaled_font_t*)$scaled_font);
@@ -3604,7 +3605,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_type (scaled_font: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_get_type ((cairo_scaled_font_t*)$scaled_font);
@@ -3613,7 +3614,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_user_data (scaled_font: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_get_user_data ((cairo_scaled_font_t*)$scaled_font, (cairo_user_data_key_t const*)$key);
@@ -3622,7 +3623,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_set_user_data (scaled_font: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_set_user_data ((cairo_scaled_font_t*)$scaled_font, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -3631,7 +3632,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_extents (scaled_font: POINTER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_extents ((cairo_scaled_font_t*)$scaled_font, (cairo_font_extents_t*)$extents);
@@ -3640,7 +3641,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_text_extents (scaled_font: POINTER; utf8: POINTER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_text_extents ((cairo_scaled_font_t*)$scaled_font, (char const*)$utf8, (cairo_text_extents_t*)$extents);
@@ -3649,7 +3650,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_glyph_extents (scaled_font: POINTER; glyphs: POINTER; num_glyphs: INTEGER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_glyph_extents ((cairo_scaled_font_t*)$scaled_font, (cairo_glyph_t const*)$glyphs, (int)$num_glyphs, (cairo_text_extents_t*)$extents);
@@ -3658,7 +3659,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_text_to_glyphs (scaled_font: POINTER; x: REAL_64; y: REAL_64; utf8: POINTER; utf8_len: INTEGER; glyphs: POINTER; num_glyphs: POINTER; clusters: POINTER; num_clusters: POINTER; cluster_flags: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_text_to_glyphs ((cairo_scaled_font_t*)$scaled_font, (double)$x, (double)$y, (char const*)$utf8, (int)$utf8_len, (cairo_glyph_t**)$glyphs, (int*)$num_glyphs, (cairo_text_cluster_t**)$clusters, (int*)$num_clusters, (cairo_text_cluster_flags_t*)$cluster_flags);
@@ -3667,7 +3668,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_font_face (scaled_font: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_scaled_font_get_font_face ((cairo_scaled_font_t*)$scaled_font);
@@ -3676,7 +3677,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_font_matrix (scaled_font: POINTER; font_matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_get_font_matrix ((cairo_scaled_font_t*)$scaled_font, (cairo_matrix_t*)$font_matrix);
@@ -3685,7 +3686,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_ctm (scaled_font: POINTER; ctm: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_get_ctm ((cairo_scaled_font_t*)$scaled_font, (cairo_matrix_t*)$ctm);
@@ -3694,7 +3695,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_scale_matrix (scaled_font: POINTER; scale_matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_get_scale_matrix ((cairo_scaled_font_t*)$scaled_font, (cairo_matrix_t*)$scale_matrix);
@@ -3703,7 +3704,7 @@ feature -- Externals
 
 	c_cairo_scaled_font_get_font_options (scaled_font: POINTER; options: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_scaled_font_get_font_options ((cairo_scaled_font_t*)$scaled_font, (cairo_font_options_t*)$options);
@@ -3712,7 +3713,7 @@ feature -- Externals
 
 	c_cairo_toy_font_face_create (family: POINTER; slant: INTEGER; weight: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_toy_font_face_create ((char const*)$family, (cairo_font_slant_t)$slant, (cairo_font_weight_t)$weight);
@@ -3721,7 +3722,7 @@ feature -- Externals
 
 	c_cairo_toy_font_face_get_family (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_toy_font_face_get_family ((cairo_font_face_t*)$font_face);
@@ -3730,7 +3731,7 @@ feature -- Externals
 
 	c_cairo_toy_font_face_get_slant (font_face: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_toy_font_face_get_slant ((cairo_font_face_t*)$font_face);
@@ -3739,7 +3740,7 @@ feature -- Externals
 
 	c_cairo_toy_font_face_get_weight (font_face: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_toy_font_face_get_weight ((cairo_font_face_t*)$font_face);
@@ -3748,7 +3749,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_create: POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_user_font_face_create ();
@@ -3757,7 +3758,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_set_init_func (font_face: POINTER; init_func: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_font_face_set_init_func ((cairo_font_face_t*)$font_face, (cairo_user_scaled_font_init_func_t)$init_func);
@@ -3766,7 +3767,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_set_render_glyph_func (font_face: POINTER; render_glyph_func: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_font_face_set_render_glyph_func ((cairo_font_face_t*)$font_face, (cairo_user_scaled_font_render_glyph_func_t)$render_glyph_func);
@@ -3775,7 +3776,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_set_text_to_glyphs_func (font_face: POINTER; text_to_glyphs_func: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_font_face_set_text_to_glyphs_func ((cairo_font_face_t*)$font_face, (cairo_user_scaled_font_text_to_glyphs_func_t)$text_to_glyphs_func);
@@ -3784,7 +3785,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_set_unicode_to_glyph_func (font_face: POINTER; unicode_to_glyph_func: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_user_font_face_set_unicode_to_glyph_func ((cairo_font_face_t*)$font_face, (cairo_user_scaled_font_unicode_to_glyph_func_t)$unicode_to_glyph_func);
@@ -3793,7 +3794,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_get_init_func (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_user_font_face_get_init_func ((cairo_font_face_t*)$font_face);
@@ -3802,7 +3803,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_get_render_glyph_func (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_user_font_face_get_render_glyph_func ((cairo_font_face_t*)$font_face);
@@ -3811,7 +3812,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_get_text_to_glyphs_func (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_user_font_face_get_text_to_glyphs_func ((cairo_font_face_t*)$font_face);
@@ -3820,7 +3821,7 @@ feature -- Externals
 
 	c_cairo_user_font_face_get_unicode_to_glyph_func (font_face: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_user_font_face_get_unicode_to_glyph_func ((cairo_font_face_t*)$font_face);
@@ -3829,7 +3830,7 @@ feature -- Externals
 
 	c_cairo_get_operator (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_operator ((cairo_t*)$cr);
@@ -3838,7 +3839,7 @@ feature -- Externals
 
 	c_cairo_get_source (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_source ((cairo_t*)$cr);
@@ -3847,7 +3848,7 @@ feature -- Externals
 
 	c_cairo_get_tolerance (cr: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_tolerance ((cairo_t*)$cr);
@@ -3856,7 +3857,7 @@ feature -- Externals
 
 	c_cairo_get_antialias (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_antialias ((cairo_t*)$cr);
@@ -3865,7 +3866,7 @@ feature -- Externals
 
 	c_cairo_has_current_point (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_has_current_point ((cairo_t*)$cr);
@@ -3874,7 +3875,7 @@ feature -- Externals
 
 	c_cairo_get_current_point (cr: POINTER; x: POINTER; y: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_get_current_point ((cairo_t*)$cr, (double*)$x, (double*)$y);
@@ -3883,7 +3884,7 @@ feature -- Externals
 
 	c_cairo_get_fill_rule (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_fill_rule ((cairo_t*)$cr);
@@ -3892,7 +3893,7 @@ feature -- Externals
 
 	c_cairo_get_line_width (cr: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_line_width ((cairo_t*)$cr);
@@ -3901,7 +3902,7 @@ feature -- Externals
 
 	c_cairo_get_line_cap (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_line_cap ((cairo_t*)$cr);
@@ -3910,7 +3911,7 @@ feature -- Externals
 
 	c_cairo_get_line_join (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_line_join ((cairo_t*)$cr);
@@ -3919,7 +3920,7 @@ feature -- Externals
 
 	c_cairo_get_miter_limit (cr: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_miter_limit ((cairo_t*)$cr);
@@ -3928,7 +3929,7 @@ feature -- Externals
 
 	c_cairo_get_dash_count (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_dash_count ((cairo_t*)$cr);
@@ -3937,7 +3938,7 @@ feature -- Externals
 
 	c_cairo_get_dash (cr: POINTER; dashes: POINTER; offset: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_get_dash ((cairo_t*)$cr, (double*)$dashes, (double*)$offset);
@@ -3946,7 +3947,7 @@ feature -- Externals
 
 	c_cairo_get_matrix (cr: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_get_matrix ((cairo_t*)$cr, (cairo_matrix_t*)$matrix);
@@ -3955,7 +3956,7 @@ feature -- Externals
 
 	c_cairo_get_target (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_target ((cairo_t*)$cr);
@@ -3964,7 +3965,7 @@ feature -- Externals
 
 	c_cairo_get_group_target (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_get_group_target ((cairo_t*)$cr);
@@ -3973,7 +3974,7 @@ feature -- Externals
 
 	c_cairo_copy_path (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_copy_path ((cairo_t*)$cr);
@@ -3982,7 +3983,7 @@ feature -- Externals
 
 	c_cairo_copy_path_flat (cr: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_copy_path_flat ((cairo_t*)$cr);
@@ -3991,7 +3992,7 @@ feature -- Externals
 
 	c_cairo_append_path (cr: POINTER; path: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_append_path ((cairo_t*)$cr, (cairo_path_t const*)$path);
@@ -4000,7 +4001,7 @@ feature -- Externals
 
 	c_cairo_path_destroy (path: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_path_destroy ((cairo_path_t*)$path);
@@ -4009,7 +4010,7 @@ feature -- Externals
 
 	c_cairo_status (cr: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_status ((cairo_t*)$cr);
@@ -4018,7 +4019,7 @@ feature -- Externals
 
 	c_cairo_status_to_string (status: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_status_to_string ((cairo_status_t)$status);
@@ -4027,7 +4028,7 @@ feature -- Externals
 
 	c_cairo_device_reference (device: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_reference ((cairo_device_t*)$device);
@@ -4036,7 +4037,7 @@ feature -- Externals
 
 	c_cairo_device_get_type (device: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_get_type ((cairo_device_t*)$device);
@@ -4045,7 +4046,7 @@ feature -- Externals
 
 	c_cairo_device_status (device: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_status ((cairo_device_t*)$device);
@@ -4054,7 +4055,7 @@ feature -- Externals
 
 	c_cairo_device_acquire (device: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_acquire ((cairo_device_t*)$device);
@@ -4063,7 +4064,7 @@ feature -- Externals
 
 	c_cairo_device_release (device: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_release ((cairo_device_t*)$device);
@@ -4072,7 +4073,7 @@ feature -- Externals
 
 	c_cairo_device_flush (device: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_flush ((cairo_device_t*)$device);
@@ -4081,7 +4082,7 @@ feature -- Externals
 
 	c_cairo_device_finish (device: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_finish ((cairo_device_t*)$device);
@@ -4090,7 +4091,7 @@ feature -- Externals
 
 	c_cairo_device_destroy (device: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_device_destroy ((cairo_device_t*)$device);
@@ -4099,7 +4100,7 @@ feature -- Externals
 
 	c_cairo_device_get_reference_count (device: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_get_reference_count ((cairo_device_t*)$device);
@@ -4108,7 +4109,7 @@ feature -- Externals
 
 	c_cairo_device_get_user_data (device: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_get_user_data ((cairo_device_t*)$device, (cairo_user_data_key_t const*)$key);
@@ -4117,7 +4118,7 @@ feature -- Externals
 
 	c_cairo_device_set_user_data (device: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_set_user_data ((cairo_device_t*)$device, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -4126,7 +4127,7 @@ feature -- Externals
 
 	c_cairo_surface_create_similar (other: POINTER; content: INTEGER; width: INTEGER; height: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_create_similar ((cairo_surface_t*)$other, (cairo_content_t)$content, (int)$width, (int)$height);
@@ -4135,7 +4136,7 @@ feature -- Externals
 
 	c_cairo_surface_create_similar_image (other: POINTER; format: INTEGER; width: INTEGER; height: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_create_similar_image ((cairo_surface_t*)$other, (cairo_format_t)$format, (int)$width, (int)$height);
@@ -4144,7 +4145,7 @@ feature -- Externals
 
 	c_cairo_surface_map_to_image (surface: POINTER; extents: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_map_to_image ((cairo_surface_t*)$surface, (cairo_rectangle_int_t const*)$extents);
@@ -4153,7 +4154,7 @@ feature -- Externals
 
 	c_cairo_surface_unmap_image (surface: POINTER; image: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_unmap_image ((cairo_surface_t*)$surface, (cairo_surface_t*)$image);
@@ -4162,7 +4163,7 @@ feature -- Externals
 
 	c_cairo_surface_create_for_rectangle (target: POINTER; x: REAL_64; y: REAL_64; width: REAL_64; height: REAL_64): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_create_for_rectangle ((cairo_surface_t*)$target, (double)$x, (double)$y, (double)$width, (double)$height);
@@ -4171,7 +4172,7 @@ feature -- Externals
 
 	c_cairo_surface_create_observer (target: POINTER; mode: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_create_observer ((cairo_surface_t*)$target, (cairo_surface_observer_mode_t)$mode);
@@ -4180,7 +4181,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_paint_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_paint_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4189,7 +4190,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_mask_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_mask_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4198,7 +4199,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_fill_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_fill_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4207,7 +4208,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_stroke_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_stroke_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4216,7 +4217,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_glyphs_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_glyphs_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4225,7 +4226,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_flush_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_flush_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4234,7 +4235,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_add_finish_callback (abstract_surface: POINTER; func: POINTER; data: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_add_finish_callback ((cairo_surface_t*)$abstract_surface, (cairo_surface_observer_callback_t)$func, (void*)$data);
@@ -4243,7 +4244,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_print (surface: POINTER; write_func: POINTER; closure: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_print ((cairo_surface_t*)$surface, (cairo_write_func_t)$write_func, (void*)$closure);
@@ -4252,7 +4253,7 @@ feature -- Externals
 
 	c_cairo_surface_observer_elapsed (surface: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_observer_elapsed ((cairo_surface_t*)$surface);
@@ -4261,7 +4262,7 @@ feature -- Externals
 
 	c_cairo_device_observer_print (device: POINTER; write_func: POINTER; closure: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_print ((cairo_device_t*)$device, (cairo_write_func_t)$write_func, (void*)$closure);
@@ -4270,7 +4271,7 @@ feature -- Externals
 
 	c_cairo_device_observer_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_elapsed ((cairo_device_t*)$device);
@@ -4279,7 +4280,7 @@ feature -- Externals
 
 	c_cairo_device_observer_paint_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_paint_elapsed ((cairo_device_t*)$device);
@@ -4288,7 +4289,7 @@ feature -- Externals
 
 	c_cairo_device_observer_mask_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_mask_elapsed ((cairo_device_t*)$device);
@@ -4297,7 +4298,7 @@ feature -- Externals
 
 	c_cairo_device_observer_fill_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_fill_elapsed ((cairo_device_t*)$device);
@@ -4306,7 +4307,7 @@ feature -- Externals
 
 	c_cairo_device_observer_stroke_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_stroke_elapsed ((cairo_device_t*)$device);
@@ -4315,7 +4316,7 @@ feature -- Externals
 
 	c_cairo_device_observer_glyphs_elapsed (device: POINTER): REAL_64
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_device_observer_glyphs_elapsed ((cairo_device_t*)$device);
@@ -4324,7 +4325,7 @@ feature -- Externals
 
 	c_cairo_surface_reference (surface: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_reference ((cairo_surface_t*)$surface);
@@ -4333,7 +4334,7 @@ feature -- Externals
 
 	c_cairo_surface_finish (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_finish ((cairo_surface_t*)$surface);
@@ -4342,7 +4343,7 @@ feature -- Externals
 
 	c_cairo_surface_destroy (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_destroy ((cairo_surface_t*)$surface);
@@ -4351,7 +4352,7 @@ feature -- Externals
 
 	c_cairo_surface_get_device (surface: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_get_device ((cairo_surface_t*)$surface);
@@ -4360,7 +4361,7 @@ feature -- Externals
 
 	c_cairo_surface_get_reference_count (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_get_reference_count ((cairo_surface_t*)$surface);
@@ -4369,7 +4370,7 @@ feature -- Externals
 
 	c_cairo_surface_status (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_status ((cairo_surface_t*)$surface);
@@ -4378,7 +4379,7 @@ feature -- Externals
 
 	c_cairo_surface_get_type (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_get_type ((cairo_surface_t*)$surface);
@@ -4387,7 +4388,7 @@ feature -- Externals
 
 	c_cairo_surface_get_content (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_get_content ((cairo_surface_t*)$surface);
@@ -4396,7 +4397,7 @@ feature -- Externals
 
 	c_cairo_surface_write_to_png (surface: POINTER; filename: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_write_to_png ((cairo_surface_t*)$surface, (char const*)$filename);
@@ -4405,7 +4406,7 @@ feature -- Externals
 
 	c_cairo_surface_write_to_png_stream (surface: POINTER; write_func: POINTER; closure: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_write_to_png_stream ((cairo_surface_t*)$surface, (cairo_write_func_t)$write_func, (void*)$closure);
@@ -4414,7 +4415,7 @@ feature -- Externals
 
 	c_cairo_surface_get_user_data (surface: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_get_user_data ((cairo_surface_t*)$surface, (cairo_user_data_key_t const*)$key);
@@ -4423,7 +4424,7 @@ feature -- Externals
 
 	c_cairo_surface_set_user_data (surface: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_set_user_data ((cairo_surface_t*)$surface, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -4432,7 +4433,7 @@ feature -- Externals
 
 	c_cairo_surface_get_mime_data (surface: POINTER; mime_type: POINTER; data: POINTER; length: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_get_mime_data ((cairo_surface_t*)$surface, (char const*)$mime_type, (unsigned char const**)$data, (unsigned long*)$length);
@@ -4441,7 +4442,7 @@ feature -- Externals
 
 	c_cairo_surface_set_mime_data (surface: POINTER; mime_type: POINTER; data: POINTER; length: INTEGER; destroy: POINTER; closure: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_set_mime_data ((cairo_surface_t*)$surface, (char const*)$mime_type, (unsigned char const*)$data, (unsigned long)$length, (cairo_destroy_func_t)$destroy, (void*)$closure);
@@ -4450,7 +4451,7 @@ feature -- Externals
 
 	c_cairo_surface_supports_mime_type (surface: POINTER; mime_type: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_supports_mime_type ((cairo_surface_t*)$surface, (char const*)$mime_type);
@@ -4459,7 +4460,7 @@ feature -- Externals
 
 	c_cairo_surface_get_font_options (surface: POINTER; options: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_get_font_options ((cairo_surface_t*)$surface, (cairo_font_options_t*)$options);
@@ -4468,7 +4469,7 @@ feature -- Externals
 
 	c_cairo_surface_flush (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_flush ((cairo_surface_t*)$surface);
@@ -4477,7 +4478,7 @@ feature -- Externals
 
 	c_cairo_surface_mark_dirty (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_mark_dirty ((cairo_surface_t*)$surface);
@@ -4486,7 +4487,7 @@ feature -- Externals
 
 	c_cairo_surface_mark_dirty_rectangle (surface: POINTER; x: INTEGER; y: INTEGER; width: INTEGER; height: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_mark_dirty_rectangle ((cairo_surface_t*)$surface, (int)$x, (int)$y, (int)$width, (int)$height);
@@ -4495,7 +4496,7 @@ feature -- Externals
 
 	c_cairo_surface_set_device_scale (surface: POINTER; x_scale: REAL_64; y_scale: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_set_device_scale ((cairo_surface_t*)$surface, (double)$x_scale, (double)$y_scale);
@@ -4504,7 +4505,7 @@ feature -- Externals
 
 	c_cairo_surface_get_device_scale (surface: POINTER; x_scale: POINTER; y_scale: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_get_device_scale ((cairo_surface_t*)$surface, (double*)$x_scale, (double*)$y_scale);
@@ -4513,7 +4514,7 @@ feature -- Externals
 
 	c_cairo_surface_set_device_offset (surface: POINTER; x_offset: REAL_64; y_offset: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_set_device_offset ((cairo_surface_t*)$surface, (double)$x_offset, (double)$y_offset);
@@ -4522,7 +4523,7 @@ feature -- Externals
 
 	c_cairo_surface_get_device_offset (surface: POINTER; x_offset: POINTER; y_offset: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_get_device_offset ((cairo_surface_t*)$surface, (double*)$x_offset, (double*)$y_offset);
@@ -4531,7 +4532,7 @@ feature -- Externals
 
 	c_cairo_surface_set_fallback_resolution (surface: POINTER; x_pixels_per_inch: REAL_64; y_pixels_per_inch: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_set_fallback_resolution ((cairo_surface_t*)$surface, (double)$x_pixels_per_inch, (double)$y_pixels_per_inch);
@@ -4540,7 +4541,7 @@ feature -- Externals
 
 	c_cairo_surface_get_fallback_resolution (surface: POINTER; x_pixels_per_inch: POINTER; y_pixels_per_inch: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_get_fallback_resolution ((cairo_surface_t*)$surface, (double*)$x_pixels_per_inch, (double*)$y_pixels_per_inch);
@@ -4549,7 +4550,7 @@ feature -- Externals
 
 	c_cairo_surface_copy_page (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_copy_page ((cairo_surface_t*)$surface);
@@ -4558,7 +4559,7 @@ feature -- Externals
 
 	c_cairo_surface_show_page (surface: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_surface_show_page ((cairo_surface_t*)$surface);
@@ -4567,7 +4568,7 @@ feature -- Externals
 
 	c_cairo_surface_has_show_text_glyphs (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_surface_has_show_text_glyphs ((cairo_surface_t*)$surface);
@@ -4576,7 +4577,7 @@ feature -- Externals
 
 	c_cairo_image_surface_create (format: INTEGER; width: INTEGER; height: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_create ((cairo_format_t)$format, (int)$width, (int)$height);
@@ -4585,7 +4586,7 @@ feature -- Externals
 
 	c_cairo_format_stride_for_width (format: INTEGER; width: INTEGER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_format_stride_for_width ((cairo_format_t)$format, (int)$width);
@@ -4594,7 +4595,7 @@ feature -- Externals
 
 	c_cairo_image_surface_create_for_data (data: POINTER; format: INTEGER; width: INTEGER; height: INTEGER; stride: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_create_for_data ((unsigned char*)$data, (cairo_format_t)$format, (int)$width, (int)$height, (int)$stride);
@@ -4603,7 +4604,7 @@ feature -- Externals
 
 	c_cairo_image_surface_get_data (surface: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_get_data ((cairo_surface_t*)$surface);
@@ -4612,7 +4613,7 @@ feature -- Externals
 
 	c_cairo_image_surface_get_format (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_get_format ((cairo_surface_t*)$surface);
@@ -4621,7 +4622,7 @@ feature -- Externals
 
 	c_cairo_image_surface_get_width (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_get_width ((cairo_surface_t*)$surface);
@@ -4630,7 +4631,7 @@ feature -- Externals
 
 	c_cairo_image_surface_get_height (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_get_height ((cairo_surface_t*)$surface);
@@ -4639,7 +4640,7 @@ feature -- Externals
 
 	c_cairo_image_surface_get_stride (surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_get_stride ((cairo_surface_t*)$surface);
@@ -4648,7 +4649,7 @@ feature -- Externals
 
 	c_cairo_image_surface_create_from_png_stream (read_func: POINTER; closure: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_image_surface_create_from_png_stream ((cairo_read_func_t)$read_func, (void*)$closure);
@@ -4657,7 +4658,7 @@ feature -- Externals
 
 	c_cairo_recording_surface_create (content: INTEGER; extents: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_recording_surface_create ((cairo_content_t)$content, (cairo_rectangle_t const*)$extents);
@@ -4666,7 +4667,7 @@ feature -- Externals
 
 	c_cairo_recording_surface_ink_extents (surface: POINTER; x0: POINTER; y0: POINTER; width: POINTER; height: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_recording_surface_ink_extents ((cairo_surface_t*)$surface, (double*)$x0, (double*)$y0, (double*)$width, (double*)$height);
@@ -4675,7 +4676,7 @@ feature -- Externals
 
 	c_cairo_recording_surface_get_extents (surface: POINTER; extents: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_recording_surface_get_extents ((cairo_surface_t*)$surface, (cairo_rectangle_t*)$extents);
@@ -4684,7 +4685,7 @@ feature -- Externals
 
 	c_cairo_pattern_create_raster_source (user_data: POINTER; content: INTEGER; width: INTEGER; height: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_raster_source ((void*)$user_data, (cairo_content_t)$content, (int)$width, (int)$height);
@@ -4693,7 +4694,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_set_callback_data (pattern: POINTER; data: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_set_callback_data ((cairo_pattern_t*)$pattern, (void*)$data);
@@ -4702,7 +4703,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_get_callback_data (pattern: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_raster_source_pattern_get_callback_data ((cairo_pattern_t*)$pattern);
@@ -4711,7 +4712,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_set_acquire (pattern: POINTER; acquire: POINTER; release: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_set_acquire ((cairo_pattern_t*)$pattern, (cairo_raster_source_acquire_func_t)$acquire, (cairo_raster_source_release_func_t)$release);
@@ -4720,7 +4721,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_get_acquire (pattern: POINTER; acquire: POINTER; release: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_get_acquire ((cairo_pattern_t*)$pattern, (cairo_raster_source_acquire_func_t*)$acquire, (cairo_raster_source_release_func_t*)$release);
@@ -4729,7 +4730,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_set_snapshot (pattern: POINTER; snapshot: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_set_snapshot ((cairo_pattern_t*)$pattern, (cairo_raster_source_snapshot_func_t)$snapshot);
@@ -4738,7 +4739,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_get_snapshot (pattern: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_raster_source_pattern_get_snapshot ((cairo_pattern_t*)$pattern);
@@ -4747,7 +4748,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_set_copy (pattern: POINTER; a_copy: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_set_copy ((cairo_pattern_t*)$pattern, (cairo_raster_source_copy_func_t)$a_copy);
@@ -4756,7 +4757,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_get_copy (pattern: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_raster_source_pattern_get_copy ((cairo_pattern_t*)$pattern);
@@ -4765,7 +4766,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_set_finish (pattern: POINTER; finish: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_raster_source_pattern_set_finish ((cairo_pattern_t*)$pattern, (cairo_raster_source_finish_func_t)$finish);
@@ -4774,7 +4775,7 @@ feature -- Externals
 
 	c_cairo_raster_source_pattern_get_finish (pattern: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_raster_source_pattern_get_finish ((cairo_pattern_t*)$pattern);
@@ -4783,7 +4784,7 @@ feature -- Externals
 
 	c_cairo_pattern_create_for_surface (surface: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_for_surface ((cairo_surface_t*)$surface);
@@ -4792,7 +4793,7 @@ feature -- Externals
 
 	c_cairo_pattern_create_mesh: POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_create_mesh ();
@@ -4801,7 +4802,7 @@ feature -- Externals
 
 	c_cairo_pattern_reference (pattern: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_reference ((cairo_pattern_t*)$pattern);
@@ -4810,7 +4811,7 @@ feature -- Externals
 
 	c_cairo_pattern_destroy (pattern: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_destroy ((cairo_pattern_t*)$pattern);
@@ -4819,7 +4820,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_reference_count (pattern: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_reference_count ((cairo_pattern_t*)$pattern);
@@ -4828,7 +4829,7 @@ feature -- Externals
 
 	c_cairo_pattern_status (pattern: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_status ((cairo_pattern_t*)$pattern);
@@ -4837,7 +4838,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_user_data (pattern: POINTER; key: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_user_data ((cairo_pattern_t*)$pattern, (cairo_user_data_key_t const*)$key);
@@ -4846,7 +4847,7 @@ feature -- Externals
 
 	c_cairo_pattern_set_user_data (pattern: POINTER; key: POINTER; user_data: POINTER; destroy: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_set_user_data ((cairo_pattern_t*)$pattern, (cairo_user_data_key_t const*)$key, (void*)$user_data, (cairo_destroy_func_t)$destroy);
@@ -4855,7 +4856,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_type (pattern: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_type ((cairo_pattern_t*)$pattern);
@@ -4864,7 +4865,7 @@ feature -- Externals
 
 	c_cairo_pattern_add_color_stop_rgb (pattern: POINTER; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_add_color_stop_rgb ((cairo_pattern_t*)$pattern, (double)$offset, (double)$red, (double)$green, (double)$blue);
@@ -4873,7 +4874,7 @@ feature -- Externals
 
 	c_cairo_pattern_add_color_stop_rgba (pattern: POINTER; offset: REAL_64; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_add_color_stop_rgba ((cairo_pattern_t*)$pattern, (double)$offset, (double)$red, (double)$green, (double)$blue, (double)$alpha);
@@ -4882,7 +4883,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_begin_patch (pattern: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_begin_patch ((cairo_pattern_t*)$pattern);
@@ -4891,7 +4892,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_end_patch (pattern: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_end_patch ((cairo_pattern_t*)$pattern);
@@ -4900,7 +4901,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_curve_to (pattern: POINTER; x1: REAL_64; y1: REAL_64; x2: REAL_64; y2: REAL_64; x3: REAL_64; y3: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_curve_to ((cairo_pattern_t*)$pattern, (double)$x1, (double)$y1, (double)$x2, (double)$y2, (double)$x3, (double)$y3);
@@ -4909,7 +4910,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_line_to (pattern: POINTER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_line_to ((cairo_pattern_t*)$pattern, (double)$x, (double)$y);
@@ -4918,7 +4919,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_move_to (pattern: POINTER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_move_to ((cairo_pattern_t*)$pattern, (double)$x, (double)$y);
@@ -4927,7 +4928,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_set_control_point (pattern: POINTER; point_num: INTEGER; x: REAL_64; y: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_set_control_point ((cairo_pattern_t*)$pattern, (unsigned int)$point_num, (double)$x, (double)$y);
@@ -4936,7 +4937,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_set_corner_color_rgb (pattern: POINTER; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_set_corner_color_rgb ((cairo_pattern_t*)$pattern, (unsigned int)$corner_num, (double)$red, (double)$green, (double)$blue);
@@ -4945,7 +4946,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_set_corner_color_rgba (pattern: POINTER; corner_num: INTEGER; red: REAL_64; green: REAL_64; blue: REAL_64; alpha: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_mesh_pattern_set_corner_color_rgba ((cairo_pattern_t*)$pattern, (unsigned int)$corner_num, (double)$red, (double)$green, (double)$blue, (double)$alpha);
@@ -4954,7 +4955,7 @@ feature -- Externals
 
 	c_cairo_pattern_set_matrix (pattern: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_set_matrix ((cairo_pattern_t*)$pattern, (cairo_matrix_t const*)$matrix);
@@ -4963,7 +4964,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_matrix (pattern: POINTER; matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_get_matrix ((cairo_pattern_t*)$pattern, (cairo_matrix_t*)$matrix);
@@ -4972,7 +4973,7 @@ feature -- Externals
 
 	c_cairo_pattern_set_extend (pattern: POINTER; extend: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_set_extend ((cairo_pattern_t*)$pattern, (cairo_extend_t)$extend);
@@ -4981,7 +4982,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_extend (pattern: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_extend ((cairo_pattern_t*)$pattern);
@@ -4990,7 +4991,7 @@ feature -- Externals
 
 	c_cairo_pattern_set_filter (pattern: POINTER; filter: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_pattern_set_filter ((cairo_pattern_t*)$pattern, (cairo_filter_t)$filter);
@@ -4999,7 +5000,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_filter (pattern: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_filter ((cairo_pattern_t*)$pattern);
@@ -5008,7 +5009,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_rgba (pattern: POINTER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_rgba ((cairo_pattern_t*)$pattern, (double*)$red, (double*)$green, (double*)$blue, (double*)$alpha);
@@ -5017,7 +5018,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_surface (pattern: POINTER; surface: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_surface ((cairo_pattern_t*)$pattern, (cairo_surface_t**)$surface);
@@ -5026,7 +5027,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_color_stop_rgba (pattern: POINTER; index: INTEGER; offset: POINTER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_color_stop_rgba ((cairo_pattern_t*)$pattern, (int)$index, (double*)$offset, (double*)$red, (double*)$green, (double*)$blue, (double*)$alpha);
@@ -5035,7 +5036,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_color_stop_count (pattern: POINTER; count: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_color_stop_count ((cairo_pattern_t*)$pattern, (int*)$count);
@@ -5044,7 +5045,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_linear_points (pattern: POINTER; x0: POINTER; y0: POINTER; x1: POINTER; y1: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_linear_points ((cairo_pattern_t*)$pattern, (double*)$x0, (double*)$y0, (double*)$x1, (double*)$y1);
@@ -5053,7 +5054,7 @@ feature -- Externals
 
 	c_cairo_pattern_get_radial_circles (pattern: POINTER; x0: POINTER; y0: POINTER; r0: POINTER; x1: POINTER; y1: POINTER; r1: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_pattern_get_radial_circles ((cairo_pattern_t*)$pattern, (double*)$x0, (double*)$y0, (double*)$r0, (double*)$x1, (double*)$y1, (double*)$r1);
@@ -5062,7 +5063,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_get_patch_count (pattern: POINTER; count: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_mesh_pattern_get_patch_count ((cairo_pattern_t*)$pattern, (unsigned int*)$count);
@@ -5071,7 +5072,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_get_path (pattern: POINTER; patch_num: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_mesh_pattern_get_path ((cairo_pattern_t*)$pattern, (unsigned int)$patch_num);
@@ -5080,7 +5081,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_get_corner_color_rgba (pattern: POINTER; patch_num: INTEGER; corner_num: INTEGER; red: POINTER; green: POINTER; blue: POINTER; alpha: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_mesh_pattern_get_corner_color_rgba ((cairo_pattern_t*)$pattern, (unsigned int)$patch_num, (unsigned int)$corner_num, (double*)$red, (double*)$green, (double*)$blue, (double*)$alpha);
@@ -5089,7 +5090,7 @@ feature -- Externals
 
 	c_cairo_mesh_pattern_get_control_point (pattern: POINTER; patch_num: INTEGER; point_num: INTEGER; x: POINTER; y: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_mesh_pattern_get_control_point ((cairo_pattern_t*)$pattern, (unsigned int)$patch_num, (unsigned int)$point_num, (double*)$x, (double*)$y);
@@ -5098,7 +5099,7 @@ feature -- Externals
 
 	c_cairo_matrix_init (matrix: POINTER; xx: REAL_64; yx: REAL_64; xy: REAL_64; yy: REAL_64; x0: REAL_64; y0: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_init ((cairo_matrix_t*)$matrix, (double)$xx, (double)$yx, (double)$xy, (double)$yy, (double)$x0, (double)$y0);
@@ -5107,7 +5108,7 @@ feature -- Externals
 
 	c_cairo_matrix_init_identity (matrix: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_init_identity ((cairo_matrix_t*)$matrix);
@@ -5116,7 +5117,7 @@ feature -- Externals
 
 	c_cairo_matrix_init_translate (matrix: POINTER; tx: REAL_64; ty: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_init_translate ((cairo_matrix_t*)$matrix, (double)$tx, (double)$ty);
@@ -5125,7 +5126,7 @@ feature -- Externals
 
 	c_cairo_matrix_init_scale (matrix: POINTER; sx: REAL_64; sy: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_init_scale ((cairo_matrix_t*)$matrix, (double)$sx, (double)$sy);
@@ -5134,7 +5135,7 @@ feature -- Externals
 
 	c_cairo_matrix_init_rotate (matrix: POINTER; radians: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_init_rotate ((cairo_matrix_t*)$matrix, (double)$radians);
@@ -5143,7 +5144,7 @@ feature -- Externals
 
 	c_cairo_matrix_translate (matrix: POINTER; tx: REAL_64; ty: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_translate ((cairo_matrix_t*)$matrix, (double)$tx, (double)$ty);
@@ -5152,7 +5153,7 @@ feature -- Externals
 
 	c_cairo_matrix_scale (matrix: POINTER; sx: REAL_64; sy: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_scale ((cairo_matrix_t*)$matrix, (double)$sx, (double)$sy);
@@ -5161,7 +5162,7 @@ feature -- Externals
 
 	c_cairo_matrix_rotate (matrix: POINTER; radians: REAL_64)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_rotate ((cairo_matrix_t*)$matrix, (double)$radians);
@@ -5170,7 +5171,7 @@ feature -- Externals
 
 	c_cairo_matrix_invert (matrix: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_matrix_invert ((cairo_matrix_t*)$matrix);
@@ -5179,7 +5180,7 @@ feature -- Externals
 
 	c_cairo_matrix_multiply (a_result: POINTER; a: POINTER; b: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_multiply ((cairo_matrix_t*)$a_result, (cairo_matrix_t const*)$a, (cairo_matrix_t const*)$b);
@@ -5188,7 +5189,7 @@ feature -- Externals
 
 	c_cairo_matrix_transform_distance (matrix: POINTER; dx: POINTER; dy: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_transform_distance ((cairo_matrix_t const*)$matrix, (double*)$dx, (double*)$dy);
@@ -5197,7 +5198,7 @@ feature -- Externals
 
 	c_cairo_matrix_transform_point (matrix: POINTER; x: POINTER; y: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_matrix_transform_point ((cairo_matrix_t const*)$matrix, (double*)$x, (double*)$y);
@@ -5206,7 +5207,7 @@ feature -- Externals
 
 	c_cairo_region_create: POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_create ();
@@ -5215,7 +5216,7 @@ feature -- Externals
 
 	c_cairo_region_create_rectangle (rectangle: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_create_rectangle ((cairo_rectangle_int_t const*)$rectangle);
@@ -5224,7 +5225,7 @@ feature -- Externals
 
 	c_cairo_region_create_rectangles (rects: POINTER; count: INTEGER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_create_rectangles ((cairo_rectangle_int_t const*)$rects, (int)$count);
@@ -5233,7 +5234,7 @@ feature -- Externals
 
 	c_cairo_region_copy (original: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_copy ((cairo_region_t const*)$original);
@@ -5242,7 +5243,7 @@ feature -- Externals
 
 	c_cairo_region_reference (region: POINTER): POINTER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_reference ((cairo_region_t*)$region);
@@ -5251,7 +5252,7 @@ feature -- Externals
 
 	c_cairo_region_destroy (region: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_region_destroy ((cairo_region_t*)$region);
@@ -5260,7 +5261,7 @@ feature -- Externals
 
 	c_cairo_region_equal (a: POINTER; b: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_equal ((cairo_region_t const*)$a, (cairo_region_t const*)$b);
@@ -5269,7 +5270,7 @@ feature -- Externals
 
 	c_cairo_region_status (region: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_status ((cairo_region_t const*)$region);
@@ -5278,7 +5279,7 @@ feature -- Externals
 
 	c_cairo_region_get_extents (region: POINTER; extents: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_region_get_extents ((cairo_region_t const*)$region, (cairo_rectangle_int_t*)$extents);
@@ -5287,7 +5288,7 @@ feature -- Externals
 
 	c_cairo_region_num_rectangles (region: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_num_rectangles ((cairo_region_t const*)$region);
@@ -5296,7 +5297,7 @@ feature -- Externals
 
 	c_cairo_region_get_rectangle (region: POINTER; nth: INTEGER; rectangle: POINTER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_region_get_rectangle ((cairo_region_t const*)$region, (int)$nth, (cairo_rectangle_int_t*)$rectangle);
@@ -5305,7 +5306,7 @@ feature -- Externals
 
 	c_cairo_region_is_empty (region: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_is_empty ((cairo_region_t const*)$region);
@@ -5314,7 +5315,7 @@ feature -- Externals
 
 	c_cairo_region_contains_rectangle (region: POINTER; rectangle: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_contains_rectangle ((cairo_region_t const*)$region, (cairo_rectangle_int_t const*)$rectangle);
@@ -5323,7 +5324,7 @@ feature -- Externals
 
 	c_cairo_region_contains_point (region: POINTER; x: INTEGER; y: INTEGER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_contains_point ((cairo_region_t const*)$region, (int)$x, (int)$y);
@@ -5332,7 +5333,7 @@ feature -- Externals
 
 	c_cairo_region_translate (region: POINTER; dx: INTEGER; dy: INTEGER)
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				cairo_region_translate ((cairo_region_t*)$region, (int)$dx, (int)$dy);
@@ -5341,7 +5342,7 @@ feature -- Externals
 
 	c_cairo_region_subtract (dst: POINTER; other: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_subtract ((cairo_region_t*)$dst, (cairo_region_t const*)$other);
@@ -5350,7 +5351,7 @@ feature -- Externals
 
 	c_cairo_region_subtract_rectangle (dst: POINTER; rectangle: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_subtract_rectangle ((cairo_region_t*)$dst, (cairo_rectangle_int_t const*)$rectangle);
@@ -5359,7 +5360,7 @@ feature -- Externals
 
 	c_cairo_region_intersect (dst: POINTER; other: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_intersect ((cairo_region_t*)$dst, (cairo_region_t const*)$other);
@@ -5368,7 +5369,7 @@ feature -- Externals
 
 	c_cairo_region_intersect_rectangle (dst: POINTER; rectangle: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_intersect_rectangle ((cairo_region_t*)$dst, (cairo_rectangle_int_t const*)$rectangle);
@@ -5377,7 +5378,7 @@ feature -- Externals
 
 	c_cairo_region_union (dst: POINTER; other: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_union ((cairo_region_t*)$dst, (cairo_region_t const*)$other);
@@ -5386,7 +5387,7 @@ feature -- Externals
 
 	c_cairo_region_union_rectangle (dst: POINTER; rectangle: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_union_rectangle ((cairo_region_t*)$dst, (cairo_rectangle_int_t const*)$rectangle);
@@ -5395,7 +5396,7 @@ feature -- Externals
 
 	c_cairo_region_xor (dst: POINTER; other: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_xor ((cairo_region_t*)$dst, (cairo_region_t const*)$other);
@@ -5404,7 +5405,7 @@ feature -- Externals
 
 	c_cairo_region_xor_rectangle (dst: POINTER; rectangle: POINTER): INTEGER
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				return cairo_region_xor_rectangle ((cairo_region_t*)$dst, (cairo_rectangle_int_t const*)$rectangle);

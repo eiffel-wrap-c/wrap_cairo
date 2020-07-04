@@ -11,49 +11,49 @@ feature {ANY}
 
 	cairo_format_invalid: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_INVALID"
 		end
 
 	cairo_format_argb32: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_ARGB32"
 		end
 
 	cairo_format_rgb24: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_RGB24"
 		end
 
 	cairo_format_a8: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_A8"
 		end
 
 	cairo_format_a1: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_A1"
 		end
 
 	cairo_format_rgb16_565: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_RGB16_565"
 		end
 
 	cairo_format_rgb30: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FORMAT_RGB30"
 		end

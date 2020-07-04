@@ -11,42 +11,42 @@ feature {ANY}
 
 	cairo_pattern_type_solid: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_SOLID"
 		end
 
 	cairo_pattern_type_surface: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_SURFACE"
 		end
 
 	cairo_pattern_type_linear: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_LINEAR"
 		end
 
 	cairo_pattern_type_radial: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_RADIAL"
 		end
 
 	cairo_pattern_type_mesh: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_MESH"
 		end
 
 	cairo_pattern_type_raster_source: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATTERN_TYPE_RASTER_SOURCE"
 		end

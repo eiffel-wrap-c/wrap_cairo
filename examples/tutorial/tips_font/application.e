@@ -53,7 +53,6 @@ feature {NONE} -- Initialization
 						create te.make
 						{CAIRO_FUNCTIONS}.cairo_text_extents (cr, letter, te)
 						{CAIRO_FUNCTIONS}.cairo_move_to (cr, ic.target_index - 1 + 0.5 - te.x_bearing - te.width / 2, 0.5 - fe.descent + fe.height / 2);
-
 						{CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
 					end
 

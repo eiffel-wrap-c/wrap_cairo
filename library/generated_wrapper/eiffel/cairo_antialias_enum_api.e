@@ -11,49 +11,49 @@ feature {ANY}
 
 	cairo_antialias_default: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_DEFAULT"
 		end
 
 	cairo_antialias_none: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_NONE"
 		end
 
 	cairo_antialias_gray: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_GRAY"
 		end
 
 	cairo_antialias_subpixel: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_SUBPIXEL"
 		end
 
 	cairo_antialias_fast: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_FAST"
 		end
 
 	cairo_antialias_good: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_GOOD"
 		end
 
 	cairo_antialias_best: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_ANTIALIAS_BEST"
 		end

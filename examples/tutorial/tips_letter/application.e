@@ -53,7 +53,6 @@ feature {NONE} -- Initialization
 						{CAIRO_FUNCTIONS}.cairo_show_text (cr, letter)
 					end
 
-
 						-- Write output and clean up
 					res := {CAIRO_FUNCTIONS}.cairo_surface_write_to_png (surface, "tips_letter.png")
 					{CAIRO_FUNCTIONS}.cairo_destroy (cr)

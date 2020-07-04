@@ -11,21 +11,21 @@ feature {ANY}
 
 	cairo_font_slant_normal: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_SLANT_NORMAL"
 		end
 
 	cairo_font_slant_italic: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_SLANT_ITALIC"
 		end
 
 	cairo_font_slant_oblique: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_SLANT_OBLIQUE"
 		end

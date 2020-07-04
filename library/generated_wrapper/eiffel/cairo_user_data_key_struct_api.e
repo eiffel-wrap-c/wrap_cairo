@@ -49,7 +49,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_user_data_key
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(struct _cairo_user_data_key)"
 		end
@@ -58,7 +58,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_user_data_key
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_user_data_key*)$an_item)->unused
@@ -69,7 +69,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_user_data_key
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_user_data_key*)$an_item)->unused =  (int)$a_value

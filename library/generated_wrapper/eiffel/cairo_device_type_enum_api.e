@@ -11,63 +11,63 @@ feature {ANY}
 
 	cairo_device_type_drm: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_DRM"
 		end
 
 	cairo_device_type_gl: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_GL"
 		end
 
 	cairo_device_type_script: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_SCRIPT"
 		end
 
 	cairo_device_type_xcb: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_XCB"
 		end
 
 	cairo_device_type_xlib: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_XLIB"
 		end
 
 	cairo_device_type_xml: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_XML"
 		end
 
 	cairo_device_type_cogl: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_COGL"
 		end
 
 	cairo_device_type_win32: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_WIN32"
 		end
 
 	cairo_device_type_invalid: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_DEVICE_TYPE_INVALID"
 		end

@@ -149,7 +149,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(cairo_text_extents_t)"
 		end
@@ -158,7 +158,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->x_bearing
@@ -169,7 +169,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->x_bearing =  (double)$a_value
@@ -182,7 +182,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->y_bearing
@@ -193,7 +193,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->y_bearing =  (double)$a_value
@@ -206,7 +206,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->width
@@ -217,7 +217,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->width =  (double)$a_value
@@ -230,7 +230,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->height
@@ -241,7 +241,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->height =  (double)$a_value
@@ -254,7 +254,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->x_advance
@@ -265,7 +265,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->x_advance =  (double)$a_value
@@ -278,7 +278,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->y_advance
@@ -289,7 +289,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_extents_t*)$an_item)->y_advance =  (double)$a_value

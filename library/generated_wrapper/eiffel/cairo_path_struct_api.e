@@ -94,7 +94,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(struct cairo_path)"
 		end
@@ -103,7 +103,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->status
@@ -114,7 +114,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->status =  (cairo_status_t)$a_value
@@ -127,7 +127,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->data
@@ -138,7 +138,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->data =  (cairo_path_data_t*)$a_value
@@ -151,7 +151,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->num_data
@@ -162,7 +162,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct cairo_path*)$an_item)->num_data =  (int)$a_value

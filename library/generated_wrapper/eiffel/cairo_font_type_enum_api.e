@@ -11,35 +11,35 @@ feature {ANY}
 
 	cairo_font_type_toy: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_TYPE_TOY"
 		end
 
 	cairo_font_type_ft: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_TYPE_FT"
 		end
 
 	cairo_font_type_win32: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_TYPE_WIN32"
 		end
 
 	cairo_font_type_quartz: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_TYPE_QUARTZ"
 		end
 
 	cairo_font_type_user: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FONT_TYPE_USER"
 		end

@@ -28,7 +28,7 @@ feature {NONE} --C Implementation: union _cairo_path_data_t
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(union _cairo_path_data_t)"
 		end

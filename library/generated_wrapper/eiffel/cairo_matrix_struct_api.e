@@ -149,7 +149,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(struct _cairo_matrix)"
 		end
@@ -158,7 +158,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->xx
@@ -169,7 +169,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->xx =  (double)$a_value
@@ -182,7 +182,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->yx
@@ -193,7 +193,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->yx =  (double)$a_value
@@ -206,7 +206,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->xy
@@ -217,7 +217,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->xy =  (double)$a_value
@@ -230,7 +230,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->yy
@@ -241,7 +241,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->yy =  (double)$a_value
@@ -254,7 +254,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->x0
@@ -265,7 +265,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->x0 =  (double)$a_value
@@ -278,7 +278,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->y0
@@ -289,7 +289,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_matrix
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_matrix*)$an_item)->y0 =  (double)$a_value

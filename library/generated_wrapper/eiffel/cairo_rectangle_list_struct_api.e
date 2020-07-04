@@ -93,7 +93,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(struct _cairo_rectangle_list)"
 		end
@@ -102,7 +102,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->status
@@ -113,7 +113,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->status =  (cairo_status_t)$a_value
@@ -126,7 +126,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->rectangles
@@ -137,7 +137,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->rectangles =  (cairo_rectangle_t*)$a_value
@@ -150,7 +150,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->num_rectangles
@@ -161,7 +161,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_list
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_list*)$an_item)->num_rectangles =  (int)$a_value

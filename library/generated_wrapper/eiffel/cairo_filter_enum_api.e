@@ -11,42 +11,42 @@ feature {ANY}
 
 	cairo_filter_fast: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_FAST"
 		end
 
 	cairo_filter_good: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_GOOD"
 		end
 
 	cairo_filter_best: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_BEST"
 		end
 
 	cairo_filter_nearest: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_NEAREST"
 		end
 
 	cairo_filter_bilinear: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_BILINEAR"
 		end
 
 	cairo_filter_gaussian: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILTER_GAUSSIAN"
 		end

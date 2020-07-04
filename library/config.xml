@@ -22,8 +22,15 @@
         <wrapper type="default">
         </wrapper>
       </rule> 
-      
-    
+
+      <rule>
+        <match>
+          <identifier name="draw_source.*"/>
+        </match>
+        <wrapper type="default">
+        </wrapper>
+      </rule> 
+
     
       <!-- And the rest should be ignored -->
     <rule>

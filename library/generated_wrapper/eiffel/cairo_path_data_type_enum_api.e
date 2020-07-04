@@ -11,28 +11,28 @@ feature {ANY}
 
 	cairo_path_move_to: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATH_MOVE_TO"
 		end
 
 	cairo_path_line_to: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATH_LINE_TO"
 		end
 
 	cairo_path_curve_to: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATH_CURVE_TO"
 		end
 
 	cairo_path_close_path: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_PATH_CLOSE_PATH"
 		end

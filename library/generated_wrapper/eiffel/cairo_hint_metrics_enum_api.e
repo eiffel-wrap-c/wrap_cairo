@@ -11,21 +11,21 @@ feature {ANY}
 
 	cairo_hint_metrics_default: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_METRICS_DEFAULT"
 		end
 
 	cairo_hint_metrics_off: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_METRICS_OFF"
 		end
 
 	cairo_hint_metrics_on: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_HINT_METRICS_ON"
 		end

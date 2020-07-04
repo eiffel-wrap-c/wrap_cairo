@@ -69,7 +69,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_cluster_t
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(cairo_text_cluster_t)"
 		end
@@ -78,7 +78,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_cluster_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_cluster_t*)$an_item)->num_bytes
@@ -89,7 +89,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_cluster_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_cluster_t*)$an_item)->num_bytes =  (int)$a_value
@@ -102,7 +102,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_cluster_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_cluster_t*)$an_item)->num_glyphs
@@ -113,7 +113,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_text_cluster_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_text_cluster_t*)$an_item)->num_glyphs =  (int)$a_value

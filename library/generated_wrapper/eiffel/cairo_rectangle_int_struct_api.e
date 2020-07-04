@@ -109,7 +109,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(struct _cairo_rectangle_int)"
 		end
@@ -118,7 +118,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->x
@@ -129,7 +129,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->x =  (int)$a_value
@@ -142,7 +142,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->y
@@ -153,7 +153,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->y =  (int)$a_value
@@ -166,7 +166,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->width
@@ -177,7 +177,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->width =  (int)$a_value
@@ -190,7 +190,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->height
@@ -201,7 +201,7 @@ feature {NONE} -- Implementation wrapper for struct struct _cairo_rectangle_int
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((struct _cairo_rectangle_int*)$an_item)->height =  (int)$a_value

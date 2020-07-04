@@ -11,35 +11,35 @@ feature {ANY}
 
 	cairo_subpixel_order_default: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SUBPIXEL_ORDER_DEFAULT"
 		end
 
 	cairo_subpixel_order_rgb: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SUBPIXEL_ORDER_RGB"
 		end
 
 	cairo_subpixel_order_bgr: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SUBPIXEL_ORDER_BGR"
 		end
 
 	cairo_subpixel_order_vrgb: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SUBPIXEL_ORDER_VRGB"
 		end
 
 	cairo_subpixel_order_vbgr: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_SUBPIXEL_ORDER_VBGR"
 		end

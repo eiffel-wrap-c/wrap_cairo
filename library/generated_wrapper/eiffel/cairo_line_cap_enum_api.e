@@ -11,21 +11,21 @@ feature {ANY}
 
 	cairo_line_cap_butt: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_CAP_BUTT"
 		end
 
 	cairo_line_cap_round: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_CAP_ROUND"
 		end
 
 	cairo_line_cap_square: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_CAP_SQUARE"
 		end

@@ -11,14 +11,14 @@ feature {ANY}
 
 	cairo_fill_rule_winding: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILL_RULE_WINDING"
 		end
 
 	cairo_fill_rule_even_odd: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_FILL_RULE_EVEN_ODD"
 		end

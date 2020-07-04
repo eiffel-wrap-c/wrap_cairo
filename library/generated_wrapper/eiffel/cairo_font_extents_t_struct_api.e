@@ -129,7 +129,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(cairo_font_extents_t)"
 		end
@@ -138,7 +138,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->ascent
@@ -149,7 +149,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->ascent =  (double)$a_value
@@ -162,7 +162,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->descent
@@ -173,7 +173,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->descent =  (double)$a_value
@@ -186,7 +186,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->height
@@ -197,7 +197,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->height =  (double)$a_value
@@ -210,7 +210,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->max_x_advance
@@ -221,7 +221,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->max_x_advance =  (double)$a_value
@@ -234,7 +234,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->max_y_advance
@@ -245,7 +245,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_font_extents_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_font_extents_t*)$an_item)->max_y_advance =  (double)$a_value

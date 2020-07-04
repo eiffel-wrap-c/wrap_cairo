@@ -11,28 +11,28 @@ feature {ANY}
 
 	cairo_extend_none: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_EXTEND_NONE"
 		end
 
 	cairo_extend_repeat: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_EXTEND_REPEAT"
 		end
 
 	cairo_extend_reflect: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_EXTEND_REFLECT"
 		end
 
 	cairo_extend_pad: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_EXTEND_PAD"
 		end

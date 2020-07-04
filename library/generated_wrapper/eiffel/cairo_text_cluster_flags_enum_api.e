@@ -11,7 +11,7 @@ feature {ANY}
 
 	cairo_text_cluster_flag_backward: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_TEXT_CLUSTER_FLAG_BACKWARD"
 		end

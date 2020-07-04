@@ -89,7 +89,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 
 	sizeof_external: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"sizeof(cairo_glyph_t)"
 		end
@@ -98,7 +98,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->index
@@ -109,7 +109,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->index =  (unsigned long)$a_value
@@ -122,7 +122,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->x
@@ -133,7 +133,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->x =  (double)$a_value
@@ -146,7 +146,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->y
@@ -157,7 +157,7 @@ feature {NONE} -- Implementation wrapper for struct cairo_glyph_t
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"[
 				((cairo_glyph_t*)$an_item)->y =  (double)$a_value

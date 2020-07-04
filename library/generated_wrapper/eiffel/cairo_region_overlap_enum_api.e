@@ -11,21 +11,21 @@ feature {ANY}
 
 	cairo_region_overlap_in: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_REGION_OVERLAP_IN"
 		end
 
 	cairo_region_overlap_out: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_REGION_OVERLAP_OUT"
 		end
 
 	cairo_region_overlap_part: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_REGION_OVERLAP_PART"
 		end

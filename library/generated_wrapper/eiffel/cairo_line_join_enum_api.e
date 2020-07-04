@@ -11,21 +11,21 @@ feature {ANY}
 
 	cairo_line_join_miter: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_JOIN_MITER"
 		end
 
 	cairo_line_join_round: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_JOIN_ROUND"
 		end
 
 	cairo_line_join_bevel: INTEGER 
 		external
-			"C inline use <cairo.h>"
+			"C inline use <eif_cairo.h>"
 		alias
 			"CAIRO_LINE_JOIN_BEVEL"
 		end
