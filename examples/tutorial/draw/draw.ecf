@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="diagram" uuid="F5A0A72B-9EE0-40B7-86D3-FE23CCF75850">
-	<target name="diagram">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="draw" uuid="F5A0A72B-9EE0-40B7-86D3-FE23CCF75850">
+	<target name="draw">
 		<root class="APPLICATION" feature="make"/>
 		<file_rule>
 			<exclude>/CVS$</exclude>
@@ -15,8 +15,8 @@
 		<setting name="total_order_on_reals" value="true"/>
 		<setting name="dead_code_removal" value="feature"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<library name="wrap_cairo" location="..\..\library\wrap_cairo.ecf" readonly="false"/>
-		<cluster name="diagram" location=".\" recursive="true"/>
+		<library name="wrap_cairo" location="..\..\..\library\wrap_cairo.ecf" readonly="false"/>
+		<cluster name="draw" location=".\" recursive="true"/>
 	</target>
 </system>
 		

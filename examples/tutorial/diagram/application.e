@@ -2,7 +2,7 @@ note
 	description: "Cairo Tutorial"
 	date: "$Date$"
 	revision: "$Revision$"
-	EIS: "name=Tutorial", "src=https://www.cairographics.org/tutorial/", "protocol=uri"
+	EIS: "name=layer diagrams", "src=https://www.cairographics.org/tutorial/diagram.c", "protocol=uri"
 
 class
 	APPLICATION

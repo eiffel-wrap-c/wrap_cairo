@@ -10,7 +10,7 @@ inherit
 
 	MEMORY_STRUCTURE
 
-	
+
 create
 
 	make,
@@ -18,7 +18,7 @@ create
 
 feature -- Measurement
 
-	structure_size: INTEGER 
+	structure_size: INTEGER
 		do
 			Result := sizeof_external
 		end
@@ -35,7 +35,7 @@ feature {ANY} -- Member Access
 			result_correct: Result = c_status (item)
 		end
 
-	set_status (a_value: INTEGER) 
+	set_status (a_value: INTEGER)
 			-- Change the value of member `status` to `a_value`.
 		require
 			exists: exists
@@ -45,22 +45,43 @@ feature {ANY} -- Member Access
 			status_set: a_value = status
 		end
 
-	data: detachable CAIRO_PATH_DATA_T_UNION_API 
+	data: LIST [CAIRO_PATH_DATA_T_UNION_API]
 			-- Access member `data`
 		require
 			exists: exists
+		local
+			i: INTEGER
 		do
-			if attached c_data (item) as l_ptr and then not l_ptr.is_default_pointer then
-				create Result.make_by_pointer (l_ptr)
-			else
-				create Result.make
+			create {ARRAYED_LIST [CAIRO_PATH_DATA_T_UNION_API] } Result.make (num_data)
+			from
+				i := 0
+			until
+				i = num_data
+			loop
+				Result.force (data_at (i))
+				i := i + 1
 			end
 		ensure
-			result_void: Result = Void implies c_data (item) = default_pointer 
-			result_not_void: attached Result as l_result implies l_result.item = c_data (item) 
+			result_count: Result.count = num_data
 		end
 
-	set_data (a_value: CAIRO_PATH_DATA_T_UNION_API) 
+
+	data_at (i: INTEGER): CAIRO_PATH_DATA_T_UNION_API
+		require
+			valid_index: i>=0 and i < num_data
+		local
+			l_ptr: POINTER
+		do
+			create Result.make
+			l_ptr := c_data_at (item, i)
+			if l_ptr /= default_pointer then
+				create Result.make_by_pointer (l_ptr)
+			end
+		end
+
+
+
+	set_data (a_value: CAIRO_PATH_DATA_T_UNION_API)
 			-- Set member `data`
 		require
 			a_value_not_void: a_value /= Void
@@ -80,7 +101,7 @@ feature {ANY} -- Member Access
 			result_correct: Result = c_num_data (item)
 		end
 
-	set_num_data (a_value: INTEGER) 
+	set_num_data (a_value: INTEGER)
 			-- Change the value of member `num_data` to `a_value`.
 		require
 			exists: exists
@@ -92,7 +113,7 @@ feature {ANY} -- Member Access
 
 feature {NONE} -- Implementation wrapper for struct struct cairo_path
 
-	sizeof_external: INTEGER 
+	sizeof_external: INTEGER
 		external
 			"C inline use <eif_cairo.h>"
 		alias
@@ -110,7 +131,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 			]"
 		end
 
-	set_c_status (an_item: POINTER; a_value: INTEGER) 
+	set_c_status (an_item: POINTER; a_value: INTEGER)
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
@@ -134,7 +155,21 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 			]"
 		end
 
-	set_c_data (an_item: POINTER; a_value: POINTER) 
+
+	c_data_at (an_item: POINTER; i: INTEGER): POINTER
+		require
+			an_item_not_null: an_item /= default_pointer
+		external
+			"C inline use <eif_cairo.h>"
+		alias
+			"[
+				struct cairo_path* data_item;
+				data_item = ((struct cairo_path*)$an_item)->data;
+				return &data_item [$i];
+			]"
+		end
+
+	set_c_data (an_item: POINTER; a_value: POINTER)
 		require
 			an_item_not_null: an_item /= default_pointer
 		external
@@ -158,7 +193,7 @@ feature {NONE} -- Implementation wrapper for struct struct cairo_path
 			]"
 		end
 
-	set_c_num_data (an_item: POINTER; a_value: INTEGER) 
+	set_c_num_data (an_item: POINTER; a_value: INTEGER)
 		require
 			an_item_not_null: an_item /= default_pointer
 		external

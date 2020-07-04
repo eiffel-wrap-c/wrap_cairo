@@ -309,7 +309,7 @@ Be careful when trying to draw lines while under transform. Even if you set your
 
 # Where to Go Next
 
-This wraps up the tutorial. It doesn't cover all functions in cairo, so for some "advanced" lesser-used features, you'll need to look elsewhere. The code behind the examples ([layer diagrams](../diagram), [drawing illustrations](https://www.cairographics.org/tutorial/draw.c)) uses a handful of techniques that aren't described within, so analyzing them may be a good first step. Other [examples](https://www.cairographics.org/examples/) on cairographics.org lead in different directions. As with everything, there's a large gap between knowing the rules of the tool, and being able to use it well. The final section of this document provides some ideas to help you traverse parts of the gap.
+This wraps up the tutorial. It doesn't cover all functions in cairo, so for some "advanced" lesser-used features, you'll need to look elsewhere. The code behind the examples ([layer diagrams](./diagram), [drawing illustrations](./draw)) uses a handful of techniques that aren't described within, so analyzing them may be a good first step. Other [examples](https://www.cairographics.org/examples/) on cairographics.org lead in different directions. As with everything, there's a large gap between knowing the rules of the tool, and being able to use it well. The final section of this document provides some ideas to help you traverse parts of the gap.
 
 # Tips and Tricks
 
