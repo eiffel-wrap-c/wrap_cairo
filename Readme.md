@@ -28,6 +28,7 @@ Work in progress
 
 
 ## Examples
+[Cairo tutorial](./examples/tutorial/tutorial.md) derived from Michael Urman's [cairo tutorial for python programmers](http://www.tortall.net/mu/wiki/CairoTutorial)
 
 
 ### How to compile the C library glue code.
