@@ -28,10 +28,13 @@
 				<platform value="windows"/>
 			</condition>		
 		</external_include>
+		
+		<external_cflag value="`pkg-config --cflags cairo`">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_cflag>
 
-		
-	
-		
 		<!-- Manual Wrapper add this only if it's needed--> 
 		<external_include location="$ECF_CONFIG_PATH\manual_wrapper\c\include">
 			<condition>
@@ -59,7 +62,7 @@
 
 
 		<!-- External C library -->
-		<external_object location="/usr/local/lib/cairo.so">
+		<external_object location="`pkg-config --libs cairo`">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>

@@ -14,7 +14,7 @@ $spitshell >Makefile <<!GROK!THIS!
 SHELL = /bin/sh
 CC= $cc
 AR = ar rc
-CFLAGS = $optimize $ccflags $large -I$rt_include -I../../../generated_wrapper/c/include -I../include `pkg-config --cflags cairo` -I../../../C/include
+CFLAGS = $optimize $ccflags $large -I$rt_include -I../../../generated_wrapper/c/include -I../include `pkg-config --cflags cairo` -I../../../C/include -I../../../manual_wrapper/c/include
 LDFLAGS = $ldflags
 LIBS = $libs
 MAKE = $make

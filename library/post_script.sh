@@ -7,7 +7,15 @@
 
 
 #copy Makefile
-#cp Makefile.SH  ./generated_wrapper/c/src                          --example
+cp Makefile.SH  ./generated_wrapper/c/src                          
+
+
+cd generated_wrapper/eiffel
+rm cairo_path_struct_api.e
+rm cairo_path_data_t_union_api.e
+cd ..
+cd ..
+
 
 cd generated_wrapper/c/src/
 finish_freezing -library

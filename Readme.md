@@ -17,6 +17,9 @@ include OpenGL, BeOS, OS/2, and DirectFB.
 
 ### Linux
 
+	sudo apt-get update
+	sudo apt-get install libcairo2-dev
+	
 	
 ### Windows
 	
