@@ -13,7 +13,8 @@ inherit
 		rename
 			cairo_status_to_string as cairo_status_to_string_api,
 			cairo_pattern_create_linear as cairo_pattern_create_linear_api,
-			cairo_pattern_create_radial as cairo_pattern_create_radial_api
+			cairo_pattern_create_radial as cairo_pattern_create_radial_api,
+			cairo_image_surface_create_from_png as cairo_image_surface_create_from_png_api
 		redefine
 			cairo_image_surface_create,
 			cairo_create,
@@ -71,6 +72,15 @@ feature -- Access
 		end
 
 
-
+	cairo_image_surface_create_from_png (filename: STRING_8): CAIRO_SURFACE_STRUCT_API
+			-- https://www.cairographics.org/manual/cairo-PNG-Support.html#cairo-image-surface-create-from-png
+		local
+			c_str: C_STRING
+		do
+			create c_str.make (filename)
+			create Result.make_by_pointer (cairo_image_surface_create_from_png_api (c_str.item))
+		ensure
+			instance_free: class
+		end
 
 end
