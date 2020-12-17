@@ -57,13 +57,13 @@ feature -- Initialization
 
 feature -- Access: Routine 
 
-	routine_1: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: INTEGER], INTEGER] 
+	routine_1: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: NATURAL], INTEGER] 
 			--Eiffel routine to be call on callback.
 
-	routine_2: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: INTEGER], INTEGER] 
+	routine_2: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: NATURAL], INTEGER] 
 			--Eiffel routine to be call on callback.
 
-	routine_3: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: INTEGER], INTEGER] 
+	routine_3: detachable FUNCTION [TUPLE [a_closure: POINTER; a_data: POINTER; a_length: NATURAL], INTEGER] 
 			--Eiffel routine to be call on callback.
 
 feature -- Access: Dispatcher
@@ -101,7 +101,7 @@ feature -- Access: Dispatcher
 
 feature -- Access: Callback
 
-	on_callback_1 (a_closure: POINTER; a_data: POINTER; a_length: INTEGER): INTEGER  
+	on_callback_1 (a_closure: POINTER; a_data: POINTER; a_length: NATURAL): INTEGER  
 			-- Callback target.
 		do
 			if attached routine_1 as l_routine then 
@@ -109,7 +109,7 @@ feature -- Access: Callback
 			end
 		end
 
-	on_callback_2 (a_closure: POINTER; a_data: POINTER; a_length: INTEGER): INTEGER  
+	on_callback_2 (a_closure: POINTER; a_data: POINTER; a_length: NATURAL): INTEGER  
 			-- Callback target.
 		do
 			if attached routine_2 as l_routine then 
@@ -117,7 +117,7 @@ feature -- Access: Callback
 			end
 		end
 
-	on_callback_3 (a_closure: POINTER; a_data: POINTER; a_length: INTEGER): INTEGER  
+	on_callback_3 (a_closure: POINTER; a_data: POINTER; a_length: NATURAL): INTEGER  
 			-- Callback target.
 		do
 			if attached routine_3 as l_routine then 

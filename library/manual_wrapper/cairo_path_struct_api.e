@@ -80,7 +80,6 @@ feature {ANY} -- Member Access
 		end
 
 
-
 	set_data (a_value: CAIRO_PATH_DATA_T_UNION_API)
 			-- Set member `data`
 		require
@@ -89,7 +88,8 @@ feature {ANY} -- Member Access
 		do
 			set_c_data (item, a_value.item)
 		ensure
-			data_set: attached data as l_value implies l_value.item = a_value.item		end
+			data_set: attached data as l_value implies l_value.item = a_value.item
+		end
 
 	num_data: INTEGER
 			-- Access member `num_data`
