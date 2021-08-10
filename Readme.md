@@ -23,7 +23,7 @@ include OpenGL, BeOS, OS/2, and DirectFB.
 	
 ### Windows
 	
-	vckpg install cairo:x64-windows
+	vcpkg install cairo:x64-windows
 
 ## Status
 
